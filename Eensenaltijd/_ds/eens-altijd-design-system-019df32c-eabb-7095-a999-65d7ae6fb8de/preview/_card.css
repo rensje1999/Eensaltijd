@@ -1,0 +1,23 @@
+/* Shared preview-card frame for design system cards.
+   Each card is meant to be ~700px wide. */
+@import url('../colors_and_type.css');
+
+html, body { height: 100%; }
+body {
+  margin: 0;
+  padding: 24px;
+  background: var(--ivory);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+.card {
+  width: 100%;
+  max-width: 652px;
+  background: transparent;
+}
+.row { display: flex; gap: 12px; align-items: center; }
+.row-wrap { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.col { display: flex; flex-direction: column; gap: 12px; }
+* { box-sizing: border-box; }

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Eens & Altijd — Bruiloftsplanning</title>
+  <link rel="stylesheet" href="assets/colors_and_type.css">
+  <link rel="stylesheet" href="assets/responsive.css">
+  <script src="image-slot.js"></script>
+  <style>
+    body { margin: 0; background: var(--ivory); }
+    a { -webkit-tap-highlight-color: transparent; }
+    button:hover, a:hover { filter: brightness(0.96); }
+  </style>
+</head>
+<body data-screen-label="Home">
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script type="text/babel" src="tweaks-panel.jsx"></script>
+  <script type="text/babel" src="components/Shared.jsx"></script>
+  <script type="text/babel" src="components/CookieBanner.jsx"></script>
+  <script type="text/babel" src="components/HomeHero.jsx"></script>
+  <script type="text/babel" src="components/HomeCalm.jsx"></script>
+  <script type="text/babel" src="components/HomeBanners.jsx"></script>
+  <script type="text/babel" src="components/HomeSections.jsx"></script>
+
+  <script type="text/babel">
+    const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+      "accent": "salie",
+      "heroMood": "ochtend",
+      "canvas": "perkament"
+    }/*EDITMODE-END*/;
+
+    const ACCENTS = {
+      goud:     { g200: '#e9d8a6', g300: '#d4b86a', g400: '#b8924a', g500: '#9a7732', g600: '#6e5320' },
+      salie:    { g200: '#cfd6bd', g300: '#a9b48d', g400: '#8d9a6c', g500: '#747e59', g600: '#56603f' },
+      bordeaux: { g200: '#e6c4c2', g300: '#cf9a96', g400: '#a55a58', g500: '#8a4240', g600: '#6b2c30' },
+    };
+    const HERO_SCRIMS = {
+      ochtend: 'linear-gradient(180deg, rgba(251,247,239,0.30) 0%, rgba(43,33,23,0.24) 55%, rgba(43,33,23,0.46) 100%)',
+      avond:   'linear-gradient(180deg, rgba(43,33,23,0.30) 0%, rgba(43,33,23,0.50) 60%, rgba(43,33,23,0.70) 100%)',
+      kaarslicht: 'linear-gradient(180deg, rgba(74,36,56,0.34) 0%, rgba(43,33,23,0.62) 55%, rgba(43,33,23,0.82) 100%)',
+    };
+    const CANVASES = {
+      ivoor:    { ivory: '#fbf7ef', pearl: '#f4ecdf', tulle: '#efe6d5' },
+      perkament:{ ivory: '#f6f1e6', pearl: '#eee5d4', tulle: '#e7dcc7' },
+      tulle:    { ivory: '#faf6f4', pearl: '#f3e9e6', tulle: '#ecdfdb' },
+    };
+
+    function App() {
+      const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+      const a = ACCENTS[t.accent] || ACCENTS.goud;
+      const c = CANVASES[t.canvas] || CANVASES.ivoor;
+      const css = `:root{
+        --gold-200:${a.g200};--gold-300:${a.g300};--gold-400:${a.g400};
+        --gold-500:${a.g500};--gold-600:${a.g600};
+        --ivory:${c.ivory};--pearl:${c.pearl};--tulle:${c.tulle};
+        --hero-scrim:${HERO_SCRIMS[t.heroMood] || HERO_SCRIMS.avond};
+      }`;
+      return (
+        <>
+          <style>{css}</style>
+          <SiteNav active="home" />
+          <div style={{ paddingTop: 12 }}>
+            <HomeHero />
+          </div>
+          <HomeCalm />
+          <HomeServicesPreview />
+          <QuoteBanner />
+          <HomeAbout />
+          <HomeTimeline />
+          <HomeTestimonial />
+          <FinalCTA />
+          <SiteFooter />
+          <CookieBanner />
+          <TweaksPanel>
+            <TweakSection label="Sfeer" />
+            <TweakRadio label="Accentkleur" value={t.accent}
+                        options={['goud', 'salie', 'bordeaux']}
+                        onChange={(v) => setTweak('accent', v)} />
+            <TweakRadio label="Licht in de hero" value={t.heroMood}
+                        options={['ochtend', 'avond', 'kaarslicht']}
+                        onChange={(v) => setTweak('heroMood', v)} />
+            <TweakRadio label="Canvas" value={t.canvas}
+                        options={['ivoor', 'perkament', 'tulle']}
+                        onChange={(v) => setTweak('canvas', v)} />
+          </TweaksPanel>
+        </>
+      );
+    }
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>
