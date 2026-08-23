@@ -1,7 +1,22 @@
+const HERO_PHOTOS = [
+  { src: 'assets/hero-sluier.png', pos: 'center' },
+  { src: 'assets/hero-dans.png', pos: 'center 22%' },
+  { src: 'assets/hero-cabrio.png', pos: '55% center' },
+  { src: 'assets/koppel-zonsondergang.png', pos: 'center 8%' },
+];
+
 function HomeHero() {
+  const [i, setI] = React.useState(0);
+  React.useEffect(() => {
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const id = setInterval(() => setI(n => (n + 1) % HERO_PHOTOS.length), 6000);
+    return () => clearInterval(id);
+  }, []);
   return (
     <section style={hh.wrap}>
-      <div style={hh.bg} />
+      {HERO_PHOTOS.map((p, n) => (
+        <div key={p.src} style={{ ...hh.bg, backgroundImage: `url("${p.src}")`, backgroundPosition: p.pos, opacity: n === i ? 1 : 0 }} />
+      ))}
       <div style={hh.scrim} />
       <div style={hh.grain} />
       <div style={hh.inner}>
@@ -13,6 +28,11 @@ function HomeHero() {
         <div style={hh.actions}>
           <GoldButton href="aanbod.html" variant="beige">Bekijk mijn aanbod</GoldButton>
           <GoldButton href="contact.html" variant="primary" style={{ background: 'var(--sage-deep)', color: 'var(--ivory)', border: '1px solid var(--sage-deep)', boxShadow: 'none' }}>Plan een kennismaking</GoldButton>
+        </div>
+        <div style={hh.dots}>
+          {HERO_PHOTOS.map((p, n) => (
+            <span key={p.src} onClick={() => setI(n)} style={{ ...hh.dot, ...(n === i ? hh.dotOn : {}), cursor: 'pointer' }} />
+          ))}
         </div>
       </div>
     </section>
@@ -30,7 +50,8 @@ const hh = {
   },
   bg: {
     position: 'absolute', top: 0, bottom: 0, left: '24%', right: '-4%',
-    background: 'url("assets/hero-sluier.png") center/cover no-repeat',
+    backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat',
+    transition: 'opacity 1.6s cubic-bezier(0.4, 0, 0.2, 1)',
     WebkitMaskImage: 'linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 14%)',
     maskImage: 'linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 14%)',
   },
@@ -52,7 +73,7 @@ const hh = {
     lineHeight: 1.02, letterSpacing: '-0.01em',
     color: 'var(--ivory)', margin: 0, maxWidth: 900,
   },
-  italic: { fontStyle: 'italic', color: 'var(--gold-200)' },
+  italic: { fontStyle: 'italic', color: '#c2cba1', textShadow: '0 2px 12px rgba(43,33,23,0.45)' },
   script: {
     fontFamily: 'var(--font-script)', fontSize: 'clamp(40px, 4.5vw, 60px)',
     color: 'var(--gold-200)', marginTop: 20, lineHeight: 1,
@@ -65,9 +86,10 @@ const hh = {
     display: 'flex', alignItems: 'center', justifyContent: 'space-between',
     paddingTop: 28, borderTop: '1px solid rgba(245,236,214,0.18)',
   },
-  dots: { display: 'flex', gap: 8 },
+  dots: { display: 'flex', gap: 8, marginTop: 56 },
   dot: {
     width: 24, height: 2, background: 'rgba(245,236,214,0.3)',
+    transition: 'all .4s cubic-bezier(0.4, 0, 0.2, 1)',
   },
   dotOn: { background: 'var(--gold-200)', width: 36 },
   footScript: {

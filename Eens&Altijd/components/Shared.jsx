@@ -10,7 +10,7 @@ function SiteNav({ active = 'home', dark = false }) {
     { id: 'contact', label: 'Contact', href: 'contact.html' },
   ];
   return (
-    <nav style={{
+    <nav className="r-nav" style={{
       position: 'sticky', top: 0, zIndex: 20,
       display: 'flex', alignItems: 'center', justifyContent: 'space-between',
       padding: '20px 56px',
@@ -24,10 +24,10 @@ function SiteNav({ active = 'home', dark = false }) {
         fontFamily: 'var(--font-display)', fontSize: 26, fontWeight: 400,
         letterSpacing: '-0.005em', textDecoration: 'none',
       }}>
-        <img src="assets/logo.png" alt="Eens & Altijd" style={{ height: 144, width: 'auto' }} />
+        <img src="assets/logo.png" alt="Eens & Altijd" className="r-nav-logo" style={{ height: 90, width: 'auto' }} />
       </a>
 
-      <div style={{ display: 'flex', gap: 36, alignItems: 'center' }}>
+      <div className="r-nav-links" style={{ display: 'flex', gap: 36, alignItems: 'center' }}>
         {items.map(it => (
           <a key={it.id} href={it.href} style={{
             fontFamily: 'var(--font-body)', fontSize: 14, fontWeight: 400,
@@ -59,9 +59,12 @@ function SiteNav({ active = 'home', dark = false }) {
 function SiteFooter() {
   return (
     <footer style={footerCSS.wrap}>
-      <div style={footerCSS.panel}>
+      <div style={footerCSS.seal}>
+        <img src="assets/zegel.png" alt="Eens &amp; Altijd monogram" style={footerCSS.sealImg} />
+      </div>
+      <div className="r-panel" style={footerCSS.panel}>
         <div style={footerCSS.grain} />
-        <div style={footerCSS.inner}>
+        <div className="r-footer-inner" style={footerCSS.inner}>
           <div style={footerCSS.brandCol}>
             <div style={footerCSS.brand}>
               <img src="assets/logo-white.png" alt="Eens & Altijd" style={{ height: 224, width: 'auto', maxWidth: '100%' }} />
@@ -82,36 +85,43 @@ function SiteFooter() {
 
           <div>
             <div style={footerCSS.colHead}>Volg mij</div>
-            <a style={footerCSS.colLink} href="#">Instagram</a>
+            <a style={{ ...footerCSS.colLink, display: 'inline-flex', alignItems: 'center', gap: 8 }} href="https://www.instagram.com/eensenaltijd_weddingplanner?utm_source=qr&amp;igsh=eGkxbmR0OXpwdThy" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/></svg>
+              Instagram
+            </a>
           </div>
 
           <div>
             <div style={footerCSS.colHead}>Contact</div>
-            <div style={footerCSS.contactRow}>
-              <span style={footerCSS.icon}>✿</span>
-              <a style={{ ...footerCSS.colLink, ...footerCSS.emailLink }} href="mailto:eensenaltijd@gmail.com">eensenaltijd@gmail.com</a>
-            </div>
-            <div style={footerCSS.contactRow}>
-              <span style={footerCSS.icon}>✆</span>
-              <span style={footerCSS.colLinkPlain}>+31 6 50 53 71 18</span>
-              <a href="https://wa.me/31650537118" target="_blank" rel="noopener" style={footerCSS.waBtn} aria-label="Stuur een WhatsApp-bericht">
-                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.65-2.05-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.47s1.06 2.86 1.21 3.06c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.69.25-1.28.17-1.41-.07-.13-.27-.2-.57-.35z"/><path d="M12.04 2C6.6 2 2.18 6.42 2.18 11.86c0 1.74.46 3.44 1.32 4.94L2 22l5.34-1.4a9.83 9.83 0 0 0 4.7 1.2h.01c5.43 0 9.85-4.42 9.85-9.86A9.8 9.8 0 0 0 12.04 2zm0 17.96h-.01a8.2 8.2 0 0 1-4.16-1.14l-.3-.18-3.17.83.85-3.09-.2-.32a8.15 8.15 0 0 1-1.25-4.35c0-4.52 3.68-8.2 8.2-8.2 2.2 0 4.26.86 5.81 2.41a8.15 8.15 0 0 1 2.4 5.8c0 4.52-3.67 8.2-8.19 8.2z"/></svg>
+            <div style={footerCSS.contactList}>
+              <a style={footerCSS.contactItem} href="mailto:eensenaltijd@gmail.com?subject=Aanvraag%20via%20de%20website">
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M3.5 7.5 12 13l8.5-5.5"/></svg>
+                <span>eensenaltijd@gmail.com</span>
               </a>
-            </div>
-            <div style={footerCSS.contactRow}>
-              <span style={footerCSS.icon}>◆</span>
-              <span style={footerCSS.colLinkPlain}>Enschede · Nederland</span>
+              <a style={footerCSS.contactItem} href="https://wa.me/31650537118" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12.04 2.75a9.1 9.1 0 0 0-7.8 13.79l-1.1 3.98 4.1-1.07a9.1 9.1 0 1 0 4.8-16.7z"/><path d="M8.9 7.6h.9l1.1 2.5-1 1a6.3 6.3 0 0 0 3.1 3.1l1-1 2.5 1.1v.9c0 .8-.7 1.5-1.6 1.5A8.4 8.4 0 0 1 7.4 9.2c0-.9.6-1.6 1.5-1.6z"/></svg>
+                <span>WhatsApp</span>
+              </a>
+              <div style={{ ...footerCSS.contactItem, cursor: 'default' }}>
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
+                <span>Enschede &amp; omstreken</span>
+              </div>
             </div>
           </div>
         </div>
 
         <div style={footerCSS.divider} />
-        <div style={footerCSS.fine}>
-          <span>© {new Date().getFullYear()} Eens &amp; Altijd · Alle rechten voorbehouden</span>
+        <div className="r-fine" style={footerCSS.fine}>
+          <span style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
+            <span>© {new Date().getFullYear()} Eens &amp; Altijd</span>
+            <span>KvK 42113689</span>
+            <span>BTW NL005504212B65</span>
+          </span>
           <span style={{ display: 'flex', gap: 28 }}>
             <a href="privacy.html" style={footerCSS.fineLink}>Privacy</a>
             <a href="voorwaarden.html" style={footerCSS.fineLink}>Voorwaarden</a>
-            <a href="#" style={footerCSS.fineLink}>Cookiebeleid</a>
+            <a href="cookiebeleid.html" style={footerCSS.fineLink}>Cookiebeleid</a>
+            <a href="disclaimer.html" style={footerCSS.fineLink}>Disclaimer</a>
           </span>
         </div>
       </div>
@@ -121,6 +131,11 @@ function SiteFooter() {
 
 const footerCSS = {
   wrap: { background: 'var(--ivory)', padding: '0 32px 32px' },
+  seal: {
+    display: 'flex', justifyContent: 'center', alignItems: 'center',
+    padding: '8px 0 40px',
+  },
+  sealImg: { height: 96, width: 'auto', opacity: 0.85 },
   panel: {
     position: 'relative', overflow: 'hidden',
     maxWidth: 1320, margin: '0 auto',
@@ -173,6 +188,12 @@ const footerCSS = {
   contactRow: {
     display: 'flex', alignItems: 'flex-start', gap: 10, marginBottom: 12, minWidth: 0,
   },
+  contactList: { display: 'flex', flexDirection: 'column', gap: 12 },
+  contactItem: {
+    display: 'flex', alignItems: 'center', gap: 10,
+    fontFamily: 'var(--font-body)', fontSize: 14,
+    color: 'rgba(245,236,214,0.78)', textDecoration: 'none',
+  },
   emailLink: { wordBreak: 'normal', overflowWrap: 'break-word', flex: '1 1 0%', width: '100%', minWidth: 0, fontSize: 13 },
   icon: { color: 'var(--gold-200)', fontSize: 13, width: 16, textAlign: 'center', marginTop: 2, flexShrink: 0 },
   waBtn: {
@@ -196,18 +217,23 @@ const footerCSS = {
 };
 
 /* ---- Eyebrow + section header ------------------------------------ */
-function Eyebrow({ children, color = 'var(--gold-500)' }) {
+function Eyebrow({ children, color = 'var(--gold-500)', ornament = true }) {
   return (
     <div style={{
       fontFamily: 'var(--font-body)', fontSize: 12, fontWeight: 500,
       letterSpacing: '0.24em', textTransform: 'uppercase',
       color, marginBottom: 18,
-    }}>{children}</div>
+      display: 'flex', alignItems: 'center', gap: 12,
+      justifyContent: 'inherit',
+    }}>
+      {ornament && <span style={{ color: 'var(--brass)' }}>✦</span>}
+      <span>{children}</span>
+    </div>
   );
 }
 
 /* ---- Tulle / soft photographic placeholder ----------------------- */
-function PhotoTile({ aspect = '4 / 5', tone = 'rose', caption, style, slotId, slotSrc, photo, overlay }) {
+function PhotoTile({ aspect = '4 / 5', tone = 'rose', caption, style, slotId, slotSrc, photo, overlay, arch }) {
   const tones = {
     rose:    'linear-gradient(135deg, #efe6d5 0%, #e8c8c0 50%, #d49a8e 100%)',
     sage:    'linear-gradient(135deg, #efe6d5 0%, #c9d4be 50%, #7d8a6b 100%)',
@@ -218,7 +244,7 @@ function PhotoTile({ aspect = '4 / 5', tone = 'rose', caption, style, slotId, sl
   };
   if (slotId) {
     return (
-      <div style={{ position: 'relative', overflow: 'hidden', aspectRatio: aspect, borderRadius: 'var(--r-md)', ...style }}>
+      <div style={{ position: 'relative', overflow: 'hidden', aspectRatio: aspect, borderRadius: arch ? 'var(--arch)' : 'var(--r-md)', ...style }}>
         <image-slot id={slotId} src={slotSrc} shape="rect" placeholder={caption || 'Sleep een foto hierheen'} style={{ width: '100%', height: '100%' }}></image-slot>
       </div>
     );
@@ -226,7 +252,7 @@ function PhotoTile({ aspect = '4 / 5', tone = 'rose', caption, style, slotId, sl
   return (
     <div style={{
       position: 'relative', overflow: 'hidden',
-      aspectRatio: aspect, borderRadius: 'var(--r-md)',
+      aspectRatio: aspect, borderRadius: arch ? 'var(--arch)' : 'var(--r-md)',
       background: photo ? `url("${photo}") center/cover no-repeat` : (tones[tone] || tones.rose),
       ...style,
     }}>
@@ -284,7 +310,7 @@ function GoldButton({ children, href = '#', style, variant = 'primary' }) {
     },
     ghost: {
       background: 'transparent', color: 'var(--ink)',
-      border: '1px solid var(--gold-400)',
+      border: '1px solid var(--brass)',
     },
     dark: {
       background: 'var(--ink)', color: 'var(--ivory)',

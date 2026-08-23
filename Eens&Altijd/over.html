@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Over mij — Eens & Altijd</title>
   <link rel="stylesheet" href="assets/colors_and_type.css">
+  <link rel="stylesheet" href="assets/responsive.css">
   <style>body { margin: 0; background: var(--ivory); }</style>
 </head>
 <body data-screen-label="Over mij">
@@ -15,7 +16,9 @@
   <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
 
   <script type="text/babel" src="components/Shared.jsx"></script>
+  <script type="text/babel" src="components/CookieBanner.jsx"></script>
   <script type="text/babel" src="components/OverSections.jsx"></script>
+  <script type="text/babel" src="components/OverExtras.jsx"></script>
 
   <script type="text/babel">
     function App() {
@@ -24,8 +27,17 @@
           <SiteNav active="over" />
           <OverHero />
           <OverStory />
+          <StarDivider />
+          <OverFuture />
+          <OverVision />
+          <StarDivider />
           <OverValues />
+          <StarDivider />
+          <OverPersonal />
+          <StarDivider />
+          <OverCTA />
           <SiteFooter />
+          <CookieBanner />
         </>
       );
     }

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Eens & Altijd — Bruiloftsplanning</title>
   <link rel="stylesheet" href="assets/colors_and_type.css">
+  <link rel="stylesheet" href="assets/responsive.css">
   <script src="image-slot.js"></script>
   <style>
     body { margin: 0; background: var(--ivory); }
@@ -21,7 +22,10 @@
 
   <script type="text/babel" src="tweaks-panel.jsx"></script>
   <script type="text/babel" src="components/Shared.jsx"></script>
+  <script type="text/babel" src="components/CookieBanner.jsx"></script>
   <script type="text/babel" src="components/HomeHero.jsx"></script>
+  <script type="text/babel" src="components/HomeCalm.jsx"></script>
+  <script type="text/babel" src="components/HomeBanners.jsx"></script>
   <script type="text/babel" src="components/HomeSections.jsx"></script>
 
   <script type="text/babel">
@@ -64,10 +68,15 @@
           <div style={{ paddingTop: 12 }}>
             <HomeHero />
           </div>
-          <HomeAbout />
+          <HomeCalm />
           <HomeServicesPreview />
+          <QuoteBanner />
+          <HomeAbout />
+          <HomeTimeline />
           <HomeTestimonial />
+          <FinalCTA />
           <SiteFooter />
+          <CookieBanner />
           <TweaksPanel>
             <TweakSection label="Sfeer" />
             <TweakRadio label="Accentkleur" value={t.accent}

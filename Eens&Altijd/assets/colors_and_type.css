@@ -24,9 +24,9 @@
   --linen:    #d9cdb3;          /* deeper neutral */
 
   /* Text — soft charcoal, never pure black */
-  --ink:      #000000;          /* primary text — warm near-black */
-  --ink-soft: #000000;          /* secondary text */
-  --ink-mute: #000000;          /* tertiary / captions */
+  --ink:      #2b2117;          /* primary text — warm near-black */
+  --ink-soft: #5a4a36;          /* secondary text */
+  --ink-mute: #8a7860;          /* tertiary / captions */
   --on-gold:  #fbf7ef;          /* text on gold surfaces */
   --on-dark:  #f5ecd6;          /* text on burgundy/dark surfaces */
 
@@ -208,4 +208,23 @@ a:hover { color: var(--gold-600); }
           background-clip: text;
   -webkit-text-fill-color: transparent;
           color: transparent;
+}
+
+/* ---------- Brass / champagne accent -------------------------------- */
+:root{
+  --brass:      #d4af37;   /* polished brass — ornaments, hairline borders */
+  --brass-soft: #e6cf8a;   /* soft champagne */
+  --brass-deep: #a8862a;   /* pressed / hover */
+  --arch: 50% 50% var(--r-md) var(--r-md) / 44% 44% var(--r-md) var(--r-md);
+}
+.ornament{ color: var(--brass); }
+.dropcap::first-letter{
+  float: left;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 4.1em;
+  line-height: .82;
+  padding: .06em .09em 0 0;
+  margin: .02em .04em 0 0;
+  color: var(--brass);
 }

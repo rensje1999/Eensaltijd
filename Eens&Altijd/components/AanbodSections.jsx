@@ -1,9 +1,9 @@
 function AanbodHero() {
   return (
-    <section style={ah.wrap}>
+    <section className="r-pad" style={ah.wrap}>
       <div style={ah.tulle} />
       <div style={ah.inner}>
-        <div style={ah.eyebrow}>◆ &nbsp; Mijn aanbod</div>
+        <div style={ah.eyebrow}><span style={{ color: 'var(--brass)' }}>✦</span> &nbsp; Mijn aanbod</div>
         <h1 style={ah.title}>
           Drie pakketten.<br/>
           <em style={ah.italic}>Eén belofte.</em>
@@ -64,18 +64,17 @@ function PricingTiers() {
   }, []);
   const Check = () => (
     <span style={{
-      width: 18, height: 18, borderRadius: '50%',
-      background: 'var(--gold-300)', color: 'var(--ivory)',
-      display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-      fontSize: 11, marginRight: 12, flexShrink: 0,
-    }}>✓</span>
+      width: 18, color: 'var(--brass)', fontSize: 12, lineHeight: 1.6,
+      display: 'inline-flex', alignItems: 'flex-start', justifyContent: 'center',
+      marginRight: 12, flexShrink: 0,
+    }}>✦</span>
   );
   const tiers = [
     {
       name: 'Brons',
       tag: 'Trouwambtenaar',
-      price: '€ 700',
-      sub: 'Op de dag zelf',
+      price: '',
+      sub: 'De ceremonie · op de dag zelf',
       bg: 'linear-gradient(135deg, #f3e6da, #e4c9ab 55%, #cf9f6f)', border: '#cf9f6f', text: 'var(--ink)', muted: 'rgba(43,33,23,0.65)',
       btn: 'dark',
       featured: false,
@@ -87,68 +86,88 @@ function PricingTiers() {
     },
     {
       name: 'Zilver',
-      tag: 'Weddingplanner',
-      price: '€ 2.100',
-      sub: 'vanaf · 6 maanden begeleiding',
+      tag: 'Ceremoniemeester',
+      price: '',
+      sub: 'De laatste 3 maanden · dagcoördinatie',
       bg: 'linear-gradient(135deg, #f4f4f2, #dcdcd8 55%, #c7c7c2)', border: '#c7c7c2', text: 'var(--ink)', muted: 'rgba(43,33,23,0.65)',
       btn: 'light',
       featured: false,
       features: [
-        'Contact met leveranciers',
-        '6 maanden persoonlijke begeleiding',
-        'Volledig draaiboek op maat',
-        '4 ontwerp- en planningsgesprekken',
-        'Budgetadvies en bewaking',
-        'Op maat gemaakte offerte',
+        '3 maanden begeleiding richting de dag',
+        'Aanspreekpunt op de grote dag',
+        'Volledige dagcoördinatie',
+        'Draaiboek-check',
+        'Puntjes op de i-gesprek',
+        'Leveranciers-afstemming',
+        'Onzichtbaar oplossen van problemen',
       ],
     },
     {
       name: 'Goud',
-      tag: 'Weddingplanner & ceremoniemeester',
-      price: '€ 3.200',
-      sub: 'vanaf · 12+ maanden, alles uit handen en dagcoördinatie op de dag zelf',
+      tag: 'Full-service weddingplanner',
+      price: '',
+      sub: 'De complete organisatie · 12+ maanden',
       bg: 'var(--grad-gold-soft)', border: 'var(--gold-500)', text: 'var(--ink)', muted: 'rgba(43,33,23,0.7)',
       btn: 'light',
       featured: true,
-      features: [
-        'Alles uit Zilver, plus:',
-        '12+ maanden volledige planning',
-        'Onzichtbaar oplossen van problemen',
-        'Dagcoördinatie',
-        'Onderhandeling van contracten',
-        'Persoonlijke uitnodigingen',
-        'Aanspreekpunt voor gasten',
-        'Volledige rust voor jullie',
+      includes: 'Dit pakket kan in combinatie met pakket Zilver en Brons',
+      groups: [
+        { head: 'De volledige planning', items: [
+          '12+ maanden volledige organisatie',
+          'Locatie- en leverancierselectie',
+          'Budgetadvies en contractonderhandeling',
+          'Ontwerp- en planningsgesprekken',
+          'Inclusief het maken van een compleet draaiboek vanaf nul',
+        ] },
+        { head: 'Op de dag zelf', items: [
+          'Warm overdragen van het draaiboek aan de ceremoniemeester',
+          'Niet aanwezig op de dag zelf',
+        ] },
       ],
+      features: [],
     },
   ];
-  const order = ['Brons', 'Goud', 'Zilver'];
+  const order = ['Zilver', 'Goud', 'Brons'];
   const sortedTiers = [...tiers].sort((a, b) => order.indexOf(a.name) - order.indexOf(b.name));
   return (
-    <section style={pt.wrap}>
-      <div style={pt.grid}>
+    <section className="r-pad" style={pt.wrap}>
+      <div className="r-3col" style={pt.grid}>
         {sortedTiers.map((t) => (
           <article key={t.name} className={t.name === 'Goud' ? 'goud-shine' : ''} style={{
             ...pt.card,
             background: t.bg, color: t.text,
-            border: `1px solid ${t.border}`,
-            transform: t.featured ? 'translateY(-12px)' : 'none',
+            border: t.featured ? `2px solid ${t.border}` : `1px solid ${t.border}`,
             boxShadow: t.featured ? 'var(--shadow-2)' : 'none',
             position: 'relative', overflow: 'hidden',
           }}>
             {t.name === 'Goud' && <div className="goud-shine-sweep" />}
             <div style={{ ...pt.eyebrow, color: t.featured ? 'var(--gold-600)' : 'var(--gold-500)' }}>{t.tag}</div>
             <h3 style={{ ...pt.name, color: t.text }}>{t.name}</h3>
-            <div style={{ ...pt.price, color: t.text }}>{t.price}</div>
-            <div style={{ ...pt.sub, color: t.muted }}>{t.sub}</div>
+            {t.price && <div style={{ ...pt.price, color: t.text }}>{t.price}</div>}
+            <div style={{ ...pt.sub, color: t.muted, marginTop: t.price ? 0 : 16 }}>{t.sub}</div>
+            {t.includes && (
+              <div style={pt.includes}><span style={{ color: 'var(--brass)' }}>✦</span> {t.includes}</div>
+            )}
             <div style={{ ...pt.divider, background: t.featured ? 'rgba(43,33,23,0.12)' : 'var(--hairline)' }} />
             <ul style={{ ...pt.list, flexGrow: 1 }}>
-              {t.features.map((f, j) => (
-                <li key={j} style={{ ...pt.feat, color: t.muted }}>
-                  <Check />
-                  <span>{f}</span>
-                </li>
-              ))}
+              {t.groups
+                ? t.groups.map((g, gi) => (
+                    <React.Fragment key={gi}>
+                      <li style={{ ...pt.groupHead, marginTop: gi ? 16 : 0 }}>{g.head}</li>
+                      {g.items.map((f, j) => (
+                        <li key={j} style={{ ...pt.feat, color: t.muted }}>
+                          <Check />
+                          <span>{f}</span>
+                        </li>
+                      ))}
+                    </React.Fragment>
+                  ))
+                : t.features.map((f, j) => (
+                    <li key={j} style={{ ...pt.feat, color: t.muted }}>
+                      <Check />
+                      <span>{f}</span>
+                    </li>
+                  ))}
             </ul>
             <a href="contact.html" style={{
               ...pt.btn,
@@ -160,11 +179,19 @@ function PricingTiers() {
           </article>
         ))}
       </div>
+      <div style={pt.custom}>
+        <p style={pt.customText}>
+          Willen jullie pakketten combineren — bijvoorbeeld trouwambtenaar én
+          weddingplanner? Vraag gerust naar de mogelijkheden voor een op maat
+          gemaakt totaalconcept.
+        </p>
+        <a href="contact.html" style={pt.customLink}>Neem contact op voor de mogelijkheden <span style={{ marginLeft: 8 }}>→</span></a>
+      </div>
     </section>
   );
 }
 const pt = {
-  wrap: { padding: '32px 56px 96px', maxWidth: 1320, margin: '0 auto' },
+  wrap: { padding: '32px 56px 120px', maxWidth: 1320, margin: '0 auto', position: 'relative', zIndex: 2 },
   grid: { display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20, alignItems: 'stretch' },
   card: {
     borderRadius: 'var(--r-lg)', padding: '40px 36px',
@@ -173,6 +200,35 @@ const pt = {
   eyebrow: {
     fontFamily: 'var(--font-body)', fontSize: 11, fontWeight: 500,
     letterSpacing: '0.24em', textTransform: 'uppercase', marginBottom: 16,
+  },
+  badge: {
+    position: 'absolute', top: 0, left: 0, right: 0,
+    display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
+    fontFamily: 'var(--font-body)', fontSize: 10, fontWeight: 500,
+    letterSpacing: '0.24em', textTransform: 'uppercase',
+    color: 'var(--ink)', background: 'rgba(255,255,255,0.5)',
+    borderBottom: '1px solid var(--gold-500)', padding: '9px 0',
+  },
+  groupHead: {
+    fontFamily: 'var(--font-body)', fontSize: 10, fontWeight: 500,
+    letterSpacing: '0.2em', textTransform: 'uppercase',
+    color: 'var(--gold-600)', marginBottom: 10,
+  },
+  custom: {
+    position: 'relative', zIndex: 3,
+    marginTop: 151, padding: '28px 40px',
+    border: '1px solid var(--hairline)', borderRadius: 'var(--r-md)',
+    background: 'var(--pearl)',
+    display: 'flex', alignItems: 'center', justifyContent: 'center',
+    gap: 10, flexWrap: 'wrap', textAlign: 'center',
+  },
+  customText: {
+    fontFamily: 'var(--font-display)', fontSize: 19, fontStyle: 'italic',
+    color: 'var(--ink)', margin: 0,
+  },
+  customLink: {
+    fontFamily: 'var(--font-body)', fontSize: 14, fontWeight: 500,
+    color: 'var(--gold-500)', textDecoration: 'none', letterSpacing: '0.01em',
   },
   name: {
     fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 40,
@@ -183,12 +239,20 @@ const pt = {
     margin: '20px 0 4px', letterSpacing: '-0.005em',
   },
   sub: { fontFamily: 'var(--font-body)', fontSize: 13, letterSpacing: '0.02em' },
-  divider: { height: 1, margin: '28px 0 24px' },
-  list: { listStyle: 'none', padding: 0, margin: '0 0 28px' },
+  includes: {
+    display: 'inline-flex', alignItems: 'center', gap: 8,
+    fontFamily: 'var(--font-body)', fontSize: 10.5, fontWeight: 500,
+    letterSpacing: '0.18em', textTransform: 'uppercase',
+    color: 'var(--gold-600)', background: 'rgba(255,255,255,0.5)',
+    border: '1px solid var(--gold-500)', borderRadius: 999,
+    padding: '7px 15px', marginTop: 18, alignSelf: 'flex-start',
+  },
+  divider: { height: 1, margin: '24px 0 20px' },
+  list: { listStyle: 'none', padding: 0, margin: '0 0 24px' },
   feat: {
     display: 'flex', alignItems: 'flex-start',
-    fontFamily: 'var(--font-body)', fontSize: 14, lineHeight: 1.55,
-    marginBottom: 12,
+    fontFamily: 'var(--font-body)', fontSize: 13.5, lineHeight: 1.5,
+    marginBottom: 9,
   },
   btn: {
     display: 'inline-flex', alignItems: 'center',
@@ -204,12 +268,6 @@ function CelebrantAddon() {
       <div style={ca.grid}>
       <div style={ca.card}>
         <div style={ca.star}>✦</div>
-        <h3 style={ca.title}>Alles al geregeld? Check!<br/>Alleen nog een trouwambtenaar nodig?</h3>
-        <p style={ca.body}>Soms vallen alle puzzelstukjes al op hun plek, op één na. Goed nieuws: je kunt mij als trouwambtenaar ook los inschakelen voor een persoonlijke ceremonie op maat.</p>
-        <a href="contact.html" style={ca.btn}>Vraag de trouwambtenaar aan <span style={{ marginLeft: 10 }}>→</span></a>
-      </div>
-      <div style={ca.card}>
-        <div style={ca.star}>✦</div>
         <h3 style={ca.title}>Zelf plannen,<br/>maar niet alleen?</h3>
         <p style={ca.body}>Zelf enthousiast over het plannen van je eigen bruiloft, maar niet weten welke stappen je moet nemen? Ik bied mijzelf ook aan als wedding coach. Hierbij begeleid ik jullie tijdens het plannen van jullie eigen droomdag.</p>
         <a href="contact.html" style={ca.btn}>Vraag de Wedding coach aan <span style={{ marginLeft: 10 }}>→</span></a>
@@ -220,14 +278,14 @@ function CelebrantAddon() {
 }
 const ca = {
   wrap: { padding: '0 56px 96px', maxWidth: 1320, margin: '0 auto' },
-  grid: { display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 20, maxWidth: 1100, margin: '0 auto', alignItems: 'stretch' },
+  grid: { display: 'grid', gridTemplateColumns: '1fr', gap: 20, maxWidth: 720, margin: '0 auto', alignItems: 'stretch' },
   card: {
     textAlign: 'center', margin: 0,
     padding: '48px 40px', borderRadius: 'var(--r-lg)',
-    border: '1px solid var(--hairline)', background: 'var(--pearl)',
+    border: '1px solid var(--brass)', background: 'var(--pearl)',
     display: 'flex', flexDirection: 'column', alignItems: 'center',
   },
-  star: { color: 'var(--gold-400)', fontSize: 20, marginBottom: 16 },
+  star: { color: 'var(--brass)', fontSize: 20, marginBottom: 16 },
   title: { fontFamily: 'var(--font-display)', fontWeight: 500, fontSize: 'clamp(22px, 2.4vw, 28px)', lineHeight: 1.3, color: 'var(--ink)', margin: '0 0 16px' },
   body: { fontFamily: 'var(--font-body)', fontSize: 15, lineHeight: 1.7, color: 'var(--ink-soft)', maxWidth: 460, margin: '0 auto 28px', flex: 1 },
   btn: {
@@ -246,12 +304,12 @@ function ProcessTimeline() {
     { n: '04', t: 'De dag zelf', b: 'Ik regel alles op de achtergrond. Jullie hoeven alleen maar jullie sprookje te beleven.' },
   ];
   return (
-    <section style={pp.wrap}>
+    <section className="r-panel" style={pp.wrap}>
       <div style={pp.head}>
         <Eyebrow>Mijn aanpak</Eyebrow>
         <h2 style={pp.title}>Vier stappen.<br/><em style={{ fontStyle:'italic', color:'var(--gold-500)' }}>Een gerust gevoel.</em></h2>
       </div>
-      <div style={pp.row}>
+      <div className="r-4col" style={pp.row}>
         {steps.map(s => (
           <div key={s.n} style={pp.step}>
             <div style={pp.num}>{s.n}</div>
@@ -266,7 +324,7 @@ function ProcessTimeline() {
 }
 const pp = {
   wrap: { padding: '96px 56px', background: 'var(--pearl)', borderRadius: 'var(--r-lg)', margin: '0 32px 40px', maxWidth: 1320, marginLeft: 'auto', marginRight: 'auto' },
-  head: { textAlign: 'center', marginBottom: 64 },
+  head: { textAlign: 'center', marginBottom: 64, display: 'flex', flexDirection: 'column', alignItems: 'center' },
   title: { fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 'clamp(36px, 4vw, 56px)', lineHeight: 1.05, color: 'var(--ink)', margin: 0, letterSpacing: '-0.005em' },
   row: { display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 32, maxWidth: 1100, margin: '0 auto' },
   step: { },
@@ -278,13 +336,13 @@ const pp = {
 
 function FAQ() {
   const items = [
-    { q: 'Werk jij door heel Nederland?', a: 'Nee — wel door Overijssel. Een groot deel van mijn bruiloften vindt plaats in Enschede en de omgeving.' },
-    { q: 'Hoeveel bruiloften neem jij per jaar aan?', a: 'Maximaal 5. Zo blijft elke bruiloft persoonlijk en houd ik ruimte over voor het onverwachte.' },
-    { q: 'Hoe ver van tevoren moeten we boeken?', a: 'Voor het Goud-pakket adviseer ik minimaal 12 maanden. Voor dagcoördinatie volstaat 3 tot 6 maanden.' },
+    { q: 'Werk jij door heel Nederland?', a: 'Mijn werkgebied bevindt zich voornamelijk in Overijssel, met een sterke focus op Enschede, Hengelo, Almelo, Oldenzaal en de omliggende regio. Dromen jullie van een sfeervolle bruiloft op een prachtige locatie in Overijssel? Dan sta ik voor jullie klaar om samen het mooiste hoofdstuk van jullie liefdesverhaal te schrijven.' },
+    { q: 'Hoeveel bruiloften neem jij per jaar aan?', a: 'Om de magie, rust en exclusiviteit te bewaren, neem ik maximaal 5 bruiloften per jaar aan. Zo ben ik er echt voor jullie, houd ik de nodige ruimte over voor het onverwachte en krijgt elk uniek liefdesverhaal mijn aandacht en liefde.' },
+    { q: 'Hoe ver van tevoren moeten we boeken?', a: 'Voor de volledige organisatie van jullie droomdag (het Goud-pakket) adviseer ik om minimaal <b>12 maanden van tevoren</b> te beginnen. Zo hebben we alle tijd om elk detail perfect vorm te geven. Zoeken jullie een professionele ceremoniemeester voor dagcoördinatie of een trouwambtenaar? Dan is <b>3 tot 6 maanden van tevoren</b> voldoende om het sprookje compleet te maken.' },
     { q: 'Werk jij met vaste leveranciers?', a: 'Ik heb een netwerk waar ik mee samenwerk, maar ik pas mij altijd aan bij jullie stijl en budget. Eigen leveranciers zijn welkom.' },
   ];
   return (
-    <section style={fq.wrap}>
+    <section className="r-pad" style={fq.wrap}>
       <div style={fq.head}>
         <Eyebrow>Veelgestelde vragen</Eyebrow>
         <h2 style={fq.title}>Goed om te weten.</h2>
@@ -296,7 +354,7 @@ function FAQ() {
               <span>{it.q}</span>
               <span style={fq.plus}>+</span>
             </summary>
-            <p style={fq.a}>{it.a}</p>
+            <p style={fq.a} dangerouslySetInnerHTML={{ __html: it.a }}></p>
           </details>
         ))}
       </div>
@@ -305,7 +363,7 @@ function FAQ() {
 }
 const fq = {
   wrap: { padding: '120px 56px', maxWidth: 880, margin: '0 auto' },
-  head: { textAlign: 'center', marginBottom: 56 },
+  head: { textAlign: 'center', marginBottom: 56, display: 'flex', flexDirection: 'column', alignItems: 'center' },
   title: { fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 'clamp(36px, 4vw, 56px)', lineHeight: 1.05, color: 'var(--ink)', margin: 0, letterSpacing: '-0.005em' },
   list: { display: 'flex', flexDirection: 'column' },
   item: { borderTop: '1px solid var(--hairline)', padding: '24px 0' },

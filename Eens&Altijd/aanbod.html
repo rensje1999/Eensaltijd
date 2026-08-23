@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Aanbod — Eens & Altijd</title>
   <link rel="stylesheet" href="assets/colors_and_type.css">
+  <link rel="stylesheet" href="assets/responsive.css">
   <style>
     body { margin: 0; background: var(--ivory); }
     a { -webkit-tap-highlight-color: transparent; }
@@ -19,6 +20,7 @@
   <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
 
   <script type="text/babel" src="components/Shared.jsx"></script>
+  <script type="text/babel" src="components/CookieBanner.jsx"></script>
   <script type="text/babel" src="components/AanbodSections.jsx"></script>
 
   <script type="text/babel">
@@ -28,10 +30,10 @@
           <SiteNav active="aanbod" />
           <AanbodHero />
           <PricingTiers />
-          <CelebrantAddon />
           <ProcessTimeline />
           <FAQ />
           <SiteFooter />
+          <CookieBanner />
         </>
       );
     }

@@ -1,24 +1,24 @@
 function OverHero() {
   return (
-    <section style={oh.wrap}>
+    <section className="r-2col r-pad" style={oh.wrap}>
       <div style={oh.left}>
-        <div style={oh.eyebrow}>◆ &nbsp; Over mij</div>
+        <div style={oh.eyebrow}><span style={{ color: 'var(--brass)' }}>✦</span> &nbsp; Over mij</div>
         <h1 style={oh.title}>Hallo, ik ben<br/><em style={oh.italic}>Elise.</em></h1>
         <div style={oh.script}>De vrouw achter Eens &amp; Altijd</div>
-        <p style={oh.body}>
+        <p className="dropcap" style={oh.body}>
           Achter Eens &amp; Altijd sta ik: een organisator in hart en nieren,
-          een creatieve geest en jouw rustpunt in de voorbereiding naar de
-          mooiste dag van jullie leven.
+          een creatieve geest en jullie rustpunt in de aanloop naar het
+          mooiste hoofdstuk van jullie verhaal.
         </p>
         <p style={oh.body}>
-          Ik geloof dat een bruiloft moet voelen als een sprookje, jullie
-          happily ever after. Geen bruiloft is hetzelfde, en dat is precies
-          wat mijn werk zo fantastisch maakt!
+          Ik geloof dat een bruiloft mag voelen als een sprookje — jullie
+          eigen happily ever after. Geen enkel verhaal is hetzelfde, en dat
+          is precies wat dit werk zo bijzonder maakt.
         </p>
         <GoldButton href="contact.html" variant="dark" style={{ marginTop: 16 }}>Laat ons kennismaken</GoldButton>
       </div>
       <div style={oh.right}>
-        <PhotoTile aspect="4 / 5" photo="assets/elise-portret.jpg" />
+        <PhotoTile aspect="4 / 5" photo="assets/elise-portret.jpg" arch />
       </div>
     </section>
   );
@@ -36,27 +36,46 @@ const oh = {
 
 function OverStory() {
   return (
-    <section style={os.wrap}>
-      <div style={os.block}>
+    <section className="r-pad" style={os.wrap}>
+      <div className="r-2col r-pad-block" style={os.block}>
         <div style={os.col}>
-          <PhotoTile aspect="4 / 5" photo="assets/elise-balans.png" />
+          <PhotoTile aspect="4 / 5" photo="assets/elise-balanceren.jpg" arch />
         </div>
         <div style={os.col}>
-          <Eyebrow color="var(--ink)">Mijn verhaal</Eyebrow>
-          <h2 style={os.title}>Een planner met<br/><em style={{fontStyle:'italic', color:'var(--ink)'}}>oog voor detail.</em></h2>
+          <Eyebrow color="var(--ivory)">Mijn verhaal</Eyebrow>
+          <h2 style={os.title}>Waar organisatie<br/><em style={{fontStyle:'italic', color:'var(--gold-200)'}}>en magie samenkomen.</em></h2>
+          <div style={os.chapter}>Er was eens…</div>
           <p style={os.body}>
-            Als voormalig managementassistent, doktersassistent en
-            zorgprofessional combineer ik strakke organisatie met rust en
-            warmte. Waar anderen stress ervaren bewaar ik mijn overzicht.
+            <em>.. het besef dat echte magie in de kleinste details zit.</em>
           </p>
           <p style={os.body}>
-            In mijn vrije tijd vind je mij in de sportschool of ben ik
-            creatief bezig — de ideale energie voor het plannen en stylen
-            van jullie droomdag. Mijn doel? Zorgen dat jullie zorgeloos
-            kunnen stralen in jullie eigen sprookje. Zorgen dat jullie
-            genieten van het eerste idee tot jullie laatste dans.
+            Mijn passie voor dit vak ontstond vanuit een simpel gevoel: de
+            mooiste momenten in het leven ontstaan niet zomaar, ze worden met
+            liefde en precisie gecre&euml;erd.
           </p>
-          <div style={os.scriptLine}>Met liefde &amp; aandacht.</div>
+          <p style={os.body}>
+            Het bewaren van overzicht en het volledig ontzorgen van mensen is
+            voor mij een tweede natuur. Waar anderen keuzestress of chaos
+            ervaren, breng ik van nature de rust, structuur en harmonie.
+          </p>
+          <div style={os.chapter}>De magie ontdekt</div>
+          <p style={os.body}>
+            In mijn vrije tijd vind je mij in de sportschool of ben ik creatief
+            bezig. Die energie en mijn oog voor stijl en sfeer neem ik mee naar
+            jullie trouwdag. Want een bruiloft hoort geen lijst met to-do&rsquo;s
+            te zijn; het hoort te voelen als een betoverend hoofdstuk uit jullie
+            eigen boek.
+          </p>
+          <div style={os.chapter}>Het &lsquo;voor altijd&rsquo;</div>
+          <p style={os.body}>
+            Elk sprookje begint met &lsquo;Er was eens…&rsquo; en eindigt met
+            &lsquo;… en ze leefden nog lang en gelukkig&rsquo;. Eens &amp; Altijd
+            is de brug tussen die twee. Ik neem de zorgen uit handen, zodat
+            jullie alleen maar hoeven te stralen — vanaf het eerste idee tot de
+            allerlaatste dans.
+          </p>
+          <div style={os.scriptLine}>Met liefde &amp; aandacht,</div>
+          <div style={os.signOff}>Elise <span style={{ color: 'var(--brass)' }}>✦</span></div>
         </div>
       </div>
     </section>
@@ -64,31 +83,54 @@ function OverStory() {
 }
 const os = {
   wrap: { padding: '0 56px 96px', maxWidth: 1320, margin: '0 auto' },
-  block: { background: 'var(--blush)', borderRadius: 'var(--r-lg)', padding: '72px 64px', display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: 64, alignItems: 'center' },
+  block: { background: 'var(--blush)', borderRadius: 'var(--r-lg)', padding: '72px 64px', display: 'grid', gridTemplateColumns: '0.85fr 1.15fr', gap: 64, alignItems: 'center' },
   col: { },
   title: { fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 'clamp(36px, 4vw, 56px)', lineHeight: 1.05, color: 'var(--ivory)', margin: '0 0 24px', letterSpacing: '-0.005em' },
-  body: { fontFamily: 'var(--font-body)', fontSize: 16, lineHeight: 1.7, color: 'rgba(251,247,239,0.8)', margin: '0 0 16px', maxWidth: 460 },
-  scriptLine: { fontFamily: 'var(--font-script)', fontSize: 56, color: 'var(--ink)', lineHeight: 1, marginTop: 16 },
+  body: { fontFamily: 'var(--font-body)', fontSize: 16, lineHeight: 1.7, color: 'rgba(251,247,239,0.8)', margin: '0 0 26px', maxWidth: 480 },
+  scriptLine: { fontFamily: 'var(--font-script)', fontSize: 56, color: 'var(--gold-200)', lineHeight: 1.1, marginTop: 24 },
+  chapter: {
+    fontFamily: 'var(--font-body)', fontSize: 11, fontWeight: 500,
+    letterSpacing: '0.22em', textTransform: 'uppercase',
+    color: 'var(--brass-soft)', margin: '0 0 10px',
+  },
+  signOff: {
+    fontFamily: 'var(--font-display)', fontSize: 22, letterSpacing: '0.04em',
+    color: 'var(--ivory)', marginTop: 4,
+    display: 'flex', alignItems: 'center', gap: 10,
+  },
 };
+
+function StarDivider({ space = 96 }) {
+  return (
+    <div style={{
+      display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 18,
+      maxWidth: 420, margin: `0 auto`, padding: `${space / 2}px 0`,
+    }}>
+      <span style={{ flex: 1, height: 1, background: 'linear-gradient(to right, transparent, var(--hairline))' }} />
+      <span style={{ color: 'var(--brass)', fontSize: 13 }}>✦</span>
+      <span style={{ flex: 1, height: 1, background: 'linear-gradient(to left, transparent, var(--hairline))' }} />
+    </div>
+  );
+}
 
 function OverValues() {
   const v = [
-    { t: 'Eerlijk', b: 'Ik zeg wat haalbaar is en wat niet. Ook als dat betekent dat een idee even moet wachten.' },
-    { t: 'Persoonlijk', b: 'Maximaal 5 bruiloften per jaar — zodat ik echt de tijd kan nemen voor jullie unieke verhaal!' },
-    { t: 'Georganiseerd', b: 'Achter de schermen werk ik tot in het kleinste detail, zodat het op de dag zelf vanzelf gaat.' },
-    { t: 'Aanwezig', b: 'Op de dag zelf zijn we er. Niet als toeschouwer, maar als jullie steun en toeverlaat.' },
+    { n: '01', t: 'Zuiver &amp; eerlijk', b: 'Geen mooie praatjes, maar een heldere spiegel. Ik geef altijd eerlijk advies over wat haalbaar is binnen jullie droom.' },
+    { n: '02', t: 'Oprechte aandacht', b: 'Maximaal 5 bruiloften per jaar. Zo krijgen jullie alle tijd, liefde en toewijding die een eigen sprookje verdient.' },
+    { n: '03', t: 'Rust in de details', b: 'Achter de schermen weef ik alle losse details naadloos aan elkaar, zodat alles op de dag zelf moeiteloos verloopt.' },
+    { n: '04', t: 'De stille kracht', b: 'Op de trouwdag ben ik een vertrouwd baken van rust op de achtergrond voor jullie en de gasten, zodat jullie alleen hoeven te genieten.' },
   ];
   return (
-    <section style={ov.wrap}>
+    <section className="r-pad" style={ov.wrap}>
       <div style={ov.head}>
         <Eyebrow>Waar ik voor sta</Eyebrow>
-        <h2 style={ov.title}>Vier waarden.</h2>
+        <h2 style={ov.title}>Vier beloftes.</h2>
       </div>
-      <div style={ov.grid}>
+      <div className="r-4col" style={ov.grid}>
         {v.map((x, i) => (
           <div key={i} style={ov.card}>
-            <div style={ov.num}>0{i+1}</div>
-            <h3 style={ov.t}>{x.t}</h3>
+            <div style={ov.num}><span style={{ color: 'var(--brass)' }}>✦</span></div>
+            <h3 style={ov.t} dangerouslySetInnerHTML={{ __html: x.t }}></h3>
             <p style={ov.b}>{x.b}</p>
           </div>
         ))}
@@ -97,14 +139,19 @@ function OverValues() {
   );
 }
 const ov = {
-  wrap: { padding: '0 56px 120px', maxWidth: 1320, margin: '0 auto' },
-  head: { textAlign: 'center', marginBottom: 56 },
+  wrap: { padding: '0 56px 40px', maxWidth: 1320, margin: '0 auto' },
+  head: { textAlign: 'center', marginBottom: 64, display: 'flex', flexDirection: 'column', alignItems: 'center' },
+  script: { fontFamily: 'var(--font-script)', fontSize: 40, color: 'var(--gold-500)', lineHeight: 1, margin: '-4px 0 4px' },
   title: { fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 'clamp(36px, 4vw, 56px)', lineHeight: 1.05, color: 'var(--ink)', margin: 0, letterSpacing: '-0.005em' },
-  grid: { display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 20 },
-  card: { background: 'var(--tulle)', borderRadius: 'var(--r-md)', padding: 32, border: '1px solid var(--hairline)' },
-  num: { fontFamily: 'var(--font-display)', fontStyle: 'italic', fontSize: 32, color: 'var(--gold-400)', marginBottom: 18 },
-  t: { fontFamily: 'var(--font-display)', fontWeight: 500, fontSize: 24, color: 'var(--ink)', margin: '0 0 12px' },
-  b: { fontFamily: 'var(--font-body)', fontSize: 14, lineHeight: 1.65, color: 'var(--ink-soft)', margin: 0 },
+  grid: { display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 56, maxWidth: 1180, margin: '0 auto' },
+  card: { padding: 0, textAlign: 'center' },
+  num: { fontFamily: 'var(--font-display)', fontSize: 20, color: 'var(--brass)', marginBottom: 14 },
+  step: {
+    fontFamily: 'var(--font-body)', fontSize: 10.5, fontWeight: 500,
+    letterSpacing: '0.22em', color: 'var(--ink-mute)', marginBottom: 10,
+  },
+  t: { fontFamily: 'var(--font-display)', fontWeight: 500, fontSize: 25, color: 'var(--ink)', margin: '0 0 12px' },
+  b: { fontFamily: 'var(--font-body)', fontSize: 14.5, lineHeight: 1.7, color: 'var(--ink-soft)', margin: 0 },
 };
 
 function OverNumbers() {
@@ -135,6 +182,7 @@ const on = {
 };
 
 window.OverHero = OverHero;
+window.StarDivider = StarDivider;
 window.OverStory = OverStory;
 window.OverValues = OverValues;
 window.OverNumbers = OverNumbers;

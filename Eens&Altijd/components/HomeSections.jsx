@@ -1,9 +1,9 @@
 function HomeAbout() {
   return (
-    <section style={ha.wrap}>
-      <div style={ha.row}>
-        <div style={ha.copyBlock}>
-          <div style={ha.eyebrow}>◆ &nbsp; Over Eens & Altijd</div>
+    <section className="r-pad" style={ha.wrap}>
+      <div className="r-2col" style={ha.row}>
+        <div className="r-pad-block" style={ha.copyBlock}>
+          <div style={ha.eyebrow}><span className="ornament">◆</span> &nbsp; Over Eens & Altijd</div>
           <h2 style={ha.title}>Een planner.<br/><em style={ha.italic}>Van eerste idee tot laatste dans.</em></h2>
           <p style={ha.body}>
             Daar is die dan, die prachtige ring, die volmondige JA! en het
@@ -26,11 +26,17 @@ function HomeAbout() {
           </div>
         </div>
       </div>
+    </section>
+  );
+}
 
-      <div style={{ ...ha.row, marginTop: 96, gridTemplateColumns: '1fr 1.1fr' }}>
+function HomeApproach() {
+  return (
+    <section style={{ ...ha.wrap, paddingTop: 0 }}>
+      <div style={{ ...ha.row, gridTemplateColumns: '1fr 1.1fr' }}>
         <PhotoTile aspect="4 / 5" photo="assets/bruid-boeket.png" />
-        <div style={ha.copyBlock}>
-          <div style={ha.eyebrow}>◆ &nbsp; Mijn aanpak</div>
+        <div className="r-pad-block" style={ha.copyBlock}>
+          <div style={ha.eyebrow}><span className="ornament">◆</span> &nbsp; Mijn aanpak</div>
           <h2 style={ha.title}>Ik luister eerst.<br/><em style={ha.italic}>Plannen doen we samen!</em></h2>
           <p style={ha.body}>
             Geen pakket dat ik over jullie heen leg. Eerst een rustig
@@ -102,12 +108,12 @@ const ha = {
 /* ---- Service cards (Bronze/Silver/Gold mini) ---------------------- */
 function HomeServicesPreview() {
   const items = [
-    { name: 'Volledig', sub: '12+ maanden', body: 'De volledige bruiloft uit handen — locatie, leveranciers, draaiboek en regie.' },
-    { name: 'Samen plannen', sub: '6 maanden', body: 'Jullie zijn op weg, ik vul aan waar het schuurt.' },
-    { name: 'Dagcoördinatie', sub: 'De dag zelf', body: 'Ik regel, jullie genieten van het allereerste moment tot de laatste dans.' },
+    { name: 'Het hele verhaal', sub: '12+ maanden', body: 'De volledige bruiloft uit handen — locatie, leveranciers, draaiboek en regie.' },
+    { name: 'Samen schrijven', sub: '6 maanden', body: 'Jullie zijn op weg, ik vul aan waar het schuurt.' },
+    { name: 'De grote dag', sub: 'De dag zelf', body: 'Ik regel, jullie genieten van het allereerste moment tot de laatste dans.' },
   ];
   return (
-    <section style={hsp.wrap}>
+    <section className="r-pad" style={hsp.wrap}>
       <div style={hsp.head}>
         <div style={{
           fontFamily: 'var(--font-body)', fontSize: 12, fontWeight: 500,
@@ -115,9 +121,9 @@ function HomeServicesPreview() {
           color: 'var(--gold-500)', marginBottom: 18,
         }}>Mijn diensten</div>
         <h2 style={hsp.title}>Drie manieren om <em style={{ fontStyle:'italic', color:'var(--gold-500)' }}>samen</em> te werken.</h2>
-        <div style={hsp.scriptLine}>op jullie eigen tempo</div>
+        <div style={hsp.scriptLine}>ieder hoofdstuk op jullie eigen tempo</div>
       </div>
-      <div style={hsp.grid}>
+      <div className="r-3col" style={hsp.grid}>
         {items.map((it, i) => (
           <article key={i} style={hsp.card}>
             <div style={hsp.cardEye}>{it.sub}</div>
@@ -167,6 +173,52 @@ const hsp = {
   },
   divider: { height: 1, background: 'var(--hairline)', margin: '24px 0 18px' },
   more: { fontFamily: 'var(--font-body)', fontSize: 13, fontWeight: 500, color: 'var(--gold-500)', textDecoration: 'none' },
+};
+
+/* ---- Tijdlijn ---------------------------------------------------- */
+function HomeTimeline() {
+  return (
+    <section className="r-pad" style={htl.wrap}>
+      <h2 style={htl.title}>Van <em style={htl.italic}>'Er was eens…'</em> tot het proosten op de liefde</h2>
+      <img src="assets/tijdlijn.png" className="r-timeline-img" alt="Tijdlijn — van Eens… naar altijd" style={htl.img} />
+      <div className="r-timeline-list" style={htl.list}>
+        {[
+          { n: "01", t: "Kennismaken online", s: "Waar het sprookje begint", b: "We maken online kennis en jullie vertellen over jullie wensen, ideeën en dromen. Ik luister, stel vragen en ontdek graag of er die fijne, magische klik is." },
+          { n: "02", t: "Let’s make it official", s: "De eerste bladzijde van jullie verhaal", b: "Voelt het goed? Dan maken we het officieel. Na jullie akkoord op de offerte ontvangen jullie de opdrachtovereenkomst en kunnen we samen aan jullie sprookje beginnen." },
+          { n: "03", t: "De groepsapp", s: "Onze plek om te delen en te dromen", b: "Een eigen groepsapp waarin we gemakkelijk ideeën, afbeeldingen en documenten delen. Zo houden we alles samen overzichtelijk." },
+          { n: "04", t: "Google Drive document", s: "Het grote verhalenboek", b: "Hier verzamelen we alles rondom jullie bruiloft. Een eigen plek voor plannen, ideeën en keuzes, waarin we samen steeds een nieuw stukje van jullie verhaal schrijven." },
+          { n: "05", t: "Zoomafspraken / live afspraken", s: "Samen op pad door jullie sprookje", b: "We spreken elkaar regelmatig om de plannen te bespreken en verder uit te werken. Live, via Zoom en waar nodig op jullie locatie." },
+          { n: "06", t: "Puntjes op de i", s: "De laatste betovering", b: "De grote dag komt dichterbij! We lopen alle details nog één keer na en zorgen samen dat alles klaar is voor jullie grote moment." },
+          { n: "07", t: "The wedding", s: "En ze leefden nog lang en gelukkig…", b: "Nu is het jullie moment. Laat alles los, geniet en straal. Jullie sprookje komt tot leven — tijd om te vieren en volop te genieten!" },
+        ].map(st => (
+          <div key={st.n} style={htl.step}>
+            <div style={htl.stepNum}>{st.n}</div>
+            <h3 style={htl.stepTitle}>{st.t}</h3>
+            <div style={htl.stepScript}>{st.s}</div>
+            <p style={htl.stepBody}>{st.b}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+const htl = {
+  wrap: { padding: '0 56px 120px', maxWidth: 1320, margin: '0 auto' },
+  title: {
+    fontFamily: 'var(--font-display)', fontWeight: 400,
+    fontSize: 'clamp(32px, 3.6vw, 52px)', lineHeight: 1.1,
+    color: 'var(--ink)', margin: '0 0 40px', letterSpacing: '-0.005em',
+    textAlign: 'center', maxWidth: 900, marginLeft: 'auto', marginRight: 'auto',
+    textWrap: 'pretty',
+  },
+  italic: { fontStyle: 'italic', color: 'var(--gold-500)' },
+  img: { display: 'block', width: '100%', height: 'auto', borderRadius: 'var(--r-lg)' },
+  list: { display: 'none', flexDirection: 'column', gap: 40 },
+  step: { textAlign: 'center', paddingBottom: 36, borderBottom: '1px solid var(--hairline)' },
+  stepNum: { fontFamily: 'var(--font-display)', fontSize: 34, color: 'var(--gold-500)', lineHeight: 1, marginBottom: 10 },
+  stepTitle: { fontFamily: 'var(--font-display)', fontWeight: 500, fontSize: 21, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--ink)', margin: '0 0 8px' },
+  stepScript: { fontFamily: 'var(--font-display)', fontStyle: 'italic', fontSize: 17, color: 'var(--gold-600)', marginBottom: 14 },
+  stepBody: { fontFamily: 'var(--font-body)', fontSize: 15, lineHeight: 1.7, color: 'var(--ink-soft)', margin: 0 },
 };
 
 /* ---- Photo gallery (matching the right-side grid in screenshot) ----*/
@@ -220,7 +272,7 @@ function HomeTestimonial() {
   const go = (n) => setI((n + reviews.length) % reviews.length);
   const r = reviews[i];
   return (
-    <section style={ht.wrap}>
+    <section className="r-panel" style={ht.wrap}>
       <div style={ht.eyebrow}>Verhalen</div>
       <div style={ht.script}>{r.quote}</div>
       <p style={ht.body}>{r.body}</p>
@@ -272,10 +324,12 @@ const ht = {
   },
   dots: { display: 'flex', gap: 8 },
   navDot: { width: 8, height: 8, borderRadius: '50%', background: 'var(--hairline)', cursor: 'pointer' },
-  navDotOn: { background: 'var(--gold-400)' },
+  navDotOn: { background: 'var(--brass)' },
 };
 
 window.HomeAbout = HomeAbout;
+window.HomeApproach = HomeApproach;
 window.HomeServicesPreview = HomeServicesPreview;
+window.HomeTimeline = HomeTimeline;
 window.HomeGallery = HomeGallery;
 window.HomeTestimonial = HomeTestimonial;
