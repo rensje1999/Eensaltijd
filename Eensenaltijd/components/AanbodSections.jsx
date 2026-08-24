@@ -133,7 +133,7 @@ function PricingTiers() {
     <section className="r-pad" style={pt.wrap}>
       <div className="r-3col" style={pt.grid}>
         {sortedTiers.map((t) => (
-          <article key={t.name} className={t.name === 'Goud' ? 'goud-shine' : ''} style={{
+          <article key={t.name} className={'r-pricing-card' + (t.name === 'Goud' ? ' goud-shine' : '')} style={{
             ...pt.card,
             background: t.bg, color: t.text,
             border: t.featured ? `2px solid ${t.border}` : `1px solid ${t.border}`,
@@ -179,7 +179,7 @@ function PricingTiers() {
           </article>
         ))}
       </div>
-      <div style={pt.custom}>
+      <div className="r-pricing-custom" style={pt.custom}>
         <p style={pt.customText}>
           Willen jullie pakketten combineren — bijvoorbeeld trouwambtenaar én
           weddingplanner? Vraag gerust naar de mogelijkheden voor een op maat

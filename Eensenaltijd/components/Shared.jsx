@@ -110,18 +110,18 @@ function burgerBar(dark, open, n) {
 function SiteFooter() {
   return (
     <footer style={footerCSS.wrap}>
-      <div style={footerCSS.seal}>
+      <div className="r-footer-seal" style={footerCSS.seal}>
         <img src="assets/zegel.png" alt="Lakstempel met het monogram van Eens &amp; Altijd" loading="lazy" decoding="async" style={footerCSS.sealImg} />
       </div>
       <div className="r-panel" style={footerCSS.panel}>
         <div style={footerCSS.grain} />
         <div className="r-footer-inner" style={footerCSS.inner}>
           <div style={footerCSS.brandCol}>
-            <div style={footerCSS.brand}>
+            <div className="r-footer-brand" style={footerCSS.brand}>
               <img src="assets/logo-white.png" alt="Eens &amp; Altijd weddingplanner" loading="lazy" decoding="async" style={{ height: 224, width: 'auto', maxWidth: '100%' }} />
             </div>
-            <div style={footerCSS.script}>Zorgeloos stralen in jullie sprookje.</div>
-            <p style={footerCSS.tagline}>
+            <div className="r-footer-script" style={footerCSS.script}>Zorgeloos stralen in jullie sprookje.</div>
+            <p className="r-footer-tagline" style={footerCSS.tagline}>
               Eens in het echt. Altijd in jullie hart.
             </p>
           </div>

@@ -19,10 +19,6 @@ function OverFuture() {
       <div style={{ ...overDeep.panel, background: 'linear-gradient(135deg, #f7f5ee 0%, #eef0e4 55%, #e3e7d6 100%)', color: 'var(--ink)', padding: '88px 72px' }}>
         <div style={overDeep.grain} />
         <div style={{ position: 'relative', maxWidth: 860, margin: '0 auto' }}>
-          <img src="assets/zegel.png" alt="" aria-hidden="true" style={{
-            position: 'absolute', top: -18, right: -28,
-            height: 132, width: 'auto', opacity: 0.16, pointerEvents: 'none',
-          }} />
           <div style={{
             fontFamily: 'var(--font-body)', fontSize: 12, fontWeight: 500,
             letterSpacing: '0.24em', textTransform: 'uppercase',

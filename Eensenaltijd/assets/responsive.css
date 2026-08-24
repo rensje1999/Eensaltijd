@@ -110,6 +110,27 @@ img, svg, video { max-width: 100%; }
   .r-hero-inner { padding-top: 56px !important; padding-bottom: 28px !important; }
 }
 
+/* ---------- Footer ---------- */
+@media (max-width: 900px) {
+  .r-footer-brand, .r-footer-script, .r-footer-tagline { white-space: normal !important; }
+  .r-footer-brand { font-size: 36px !important; }
+  .r-footer-script { font-size: 30px !important; }
+  .r-footer-seal img { height: 72px !important; }
+}
+@media (max-width: 640px) {
+  .r-footer-brand { font-size: 30px !important; }
+  .r-footer-script { font-size: 25px !important; }
+}
+
+/* ---------- Aanbod: pricing cards ---------- */
+@media (max-width: 1024px) {
+  .r-pricing-custom { margin-top: 40px !important; }
+}
+@media (max-width: 900px) {
+  .r-pricing-card { min-height: 0 !important; }
+  .r-pricing-custom { flex-direction: column !important; padding: 24px 24px !important; }
+}
+
 /* ---------- Printable legal documents: reflow to viewport on phones ---------- */
 @media (max-width: 900px) {
   doc-page { --doc-page-w: 100% !important; --doc-page-margin: 22px !important; min-width: 0 !important; padding: 0 !important; }
