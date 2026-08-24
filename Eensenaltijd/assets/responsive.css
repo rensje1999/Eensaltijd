@@ -116,6 +116,7 @@ img, svg, video { max-width: 100%; }
   .r-footer-brand { font-size: 36px !important; }
   .r-footer-script { font-size: 30px !important; }
   .r-footer-seal img { height: 72px !important; }
+  .r-fine-links { gap: 16px !important; }
 }
 @media (max-width: 640px) {
   .r-footer-brand { font-size: 30px !important; }

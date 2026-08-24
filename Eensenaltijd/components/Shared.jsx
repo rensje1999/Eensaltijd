@@ -168,7 +168,7 @@ function SiteFooter() {
             <span>KvK 42113689</span>
             <span>BTW NL005504212B65</span>
           </span>
-          <span style={{ display: 'flex', gap: 28 }}>
+          <span className="r-fine-links" style={{ display: 'flex', gap: 28, flexWrap: 'wrap' }}>
             <a href="privacy.html" style={footerCSS.fineLink}>Privacy</a>
             <a href="voorwaarden.html" style={footerCSS.fineLink}>Voorwaarden</a>
             <a href="cookiebeleid.html" style={footerCSS.fineLink}>Cookiebeleid</a>
