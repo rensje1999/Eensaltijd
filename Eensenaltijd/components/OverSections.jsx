@@ -18,7 +18,7 @@ function OverHero() {
         <GoldButton href="contact.html" variant="dark" style={{ marginTop: 16 }}>Laat ons kennismaken</GoldButton>
       </div>
       <div style={oh.right}>
-        <PhotoTile aspect="4 / 5" photo="assets/elise-portret.jpg" arch />
+        <PhotoTile aspect="4 / 5" photo="assets/elise-portret.jpg" alt="Elise, weddingplanner en ceremoniemeester bij Eens &amp; Altijd in Enschede" arch />
       </div>
     </section>
   );
@@ -39,7 +39,7 @@ function OverStory() {
     <section className="r-pad" style={os.wrap}>
       <div className="r-2col r-pad-block" style={os.block}>
         <div style={os.col}>
-          <PhotoTile aspect="4 / 5" photo="assets/elise-balanceren.jpg" arch />
+          <PhotoTile aspect="4 / 5" photo="assets/elise-balanceren.jpg" alt="Weddingplanner Elise aan het werk tijdens de voorbereiding van een bruiloft" arch />
         </div>
         <div style={os.col}>
           <Eyebrow color="var(--ivory)">Mijn verhaal</Eyebrow>

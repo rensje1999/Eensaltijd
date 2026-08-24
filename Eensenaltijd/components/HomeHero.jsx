@@ -13,13 +13,13 @@ function HomeHero() {
     return () => clearInterval(id);
   }, []);
   return (
-    <section style={hh.wrap}>
+    <section className="r-hero" style={hh.wrap}>
       {HERO_PHOTOS.map((p, n) => (
-        <div key={p.src} style={{ ...hh.bg, backgroundImage: `url("${p.src}")`, backgroundPosition: p.pos, opacity: n === i ? 1 : 0 }} />
+        <div key={p.src} className="r-hero-bg" style={{ ...hh.bg, backgroundImage: `url("${p.src}")`, backgroundPosition: p.pos, opacity: n === i ? 1 : 0 }} />
       ))}
       <div style={hh.scrim} />
       <div style={hh.grain} />
-      <div style={hh.inner}>
+      <div className="r-hero-inner" style={hh.inner}>
         <h1 style={hh.headline}>
           Eens in het echt.<br/>
           <em style={hh.italic}>Altijd in jullie hart.</em>
@@ -29,7 +29,7 @@ function HomeHero() {
           <GoldButton href="aanbod.html" variant="beige">Bekijk mijn aanbod</GoldButton>
           <GoldButton href="contact.html" variant="primary" style={{ background: 'var(--sage-deep)', color: 'var(--ivory)', border: '1px solid var(--sage-deep)', boxShadow: 'none' }}>Plan een kennismaking</GoldButton>
         </div>
-        <div style={hh.dots}>
+        <div style={hh.dots} className="r-hero-dots">
           {HERO_PHOTOS.map((p, n) => (
             <span key={p.src} onClick={() => setI(n)} style={{ ...hh.dot, ...(n === i ? hh.dotOn : {}), cursor: 'pointer' }} />
           ))}

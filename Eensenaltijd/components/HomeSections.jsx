@@ -19,8 +19,8 @@ function HomeAbout() {
           <GoldButton href="over.html" variant="dark" style={{ marginTop: 12 }}>Lees meer over mij</GoldButton>
         </div>
         <div style={{ position: 'relative' }}>
-          <PhotoTile aspect="4 / 5" photo="assets/elise-werkplek.jpg" />
-          <div style={ha.glassCard}>
+          <PhotoTile aspect="4 / 5" photo="assets/elise-werkplek.jpg" alt="Elise van Eens &amp; Altijd aan haar werkplek, bezig met de planning van een bruiloft" />
+          <div className="r-float-badge" style={ha.glassCard}>
             <div style={ha.glassHead}>Ontmoet de vrouw achter Eens &amp; Altijd</div>
             <p style={ha.glassQuote}>Samen op zoek naar de sfeer die bij jullie past</p>
           </div>
@@ -34,7 +34,7 @@ function HomeApproach() {
   return (
     <section style={{ ...ha.wrap, paddingTop: 0 }}>
       <div style={{ ...ha.row, gridTemplateColumns: '1fr 1.1fr' }}>
-        <PhotoTile aspect="4 / 5" photo="assets/bruid-boeket.png" />
+        <PhotoTile aspect="4 / 5" photo="assets/bruid-boeket.png" alt="Bruid met bruidsboeket van witte rozen tijdens een bruiloft in Twente" />
         <div className="r-pad-block" style={ha.copyBlock}>
           <div style={ha.eyebrow}><span className="ornament">◆</span> &nbsp; Mijn aanpak</div>
           <h2 style={ha.title}>Ik luister eerst.<br/><em style={ha.italic}>Plannen doen we samen!</em></h2>
@@ -180,7 +180,7 @@ function HomeTimeline() {
   return (
     <section className="r-pad" style={htl.wrap}>
       <h2 style={htl.title}>Van <em style={htl.italic}>'Er was eens…'</em> tot het proosten op de liefde</h2>
-      <img src="assets/tijdlijn.png" className="r-timeline-img" alt="Tijdlijn — van Eens… naar altijd" style={htl.img} />
+      <img src="assets/tijdlijn.png" className="r-timeline-img" loading="lazy" decoding="async" alt="Tijdlijn van het plannen van een bruiloft — van de eerste kennismaking tot het proosten op de liefde" style={htl.img} />
       <div className="r-timeline-list" style={htl.list}>
         {[
           { n: "01", t: "Kennismaken online", s: "Waar het sprookje begint", b: "We maken online kennis en jullie vertellen over jullie wensen, ideeën en dromen. Ik luister, stel vragen en ontdek graag of er die fijne, magische klik is." },

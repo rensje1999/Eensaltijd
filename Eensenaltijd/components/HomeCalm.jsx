@@ -21,7 +21,7 @@ function HomeCalm() {
       `}</style>
       <div className="ea-calm__inner">
         <figure className="ea-calm__fig">
-          <img className="ea-calm__img" src="assets/kandelaars-tafel.png" alt="Gedekte tafel met witte rozen en gouden kandelaars in het avondlicht" />
+          <img className="ea-calm__img" src="assets/kandelaars-tafel.png" loading="lazy" decoding="async" alt="Gedekte bruiloftstafel met witte rozen en gouden kandelaars in het avondlicht" />
         </figure>
         <div>
           <p className="ea-calm__eyebrow"><span className="ornament">✦</span> Van stress naar rust</p>

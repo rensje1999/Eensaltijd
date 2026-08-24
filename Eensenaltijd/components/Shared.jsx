@@ -9,7 +9,13 @@ function SiteNav({ active = 'home', dark = false }) {
     { id: 'over', label: 'Over mij', href: 'over.html' },
     { id: 'contact', label: 'Contact', href: 'contact.html' },
   ];
+  const [open, setOpen] = React.useState(false);
+  React.useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [open]);
   return (
+    <React.Fragment>
     <nav className="r-nav" style={{
       position: 'sticky', top: 0, zIndex: 20,
       display: 'flex', alignItems: 'center', justifyContent: 'space-between',
@@ -24,7 +30,7 @@ function SiteNav({ active = 'home', dark = false }) {
         fontFamily: 'var(--font-display)', fontSize: 26, fontWeight: 400,
         letterSpacing: '-0.005em', textDecoration: 'none',
       }}>
-        <img src="assets/logo.png" alt="Eens & Altijd" className="r-nav-logo" style={{ height: 90, width: 'auto' }} />
+        <img src="assets/logo.png" alt="Eens &amp; Altijd — weddingplanner in Twente" width="360" height="180" className="r-nav-logo" style={{ height: 90, width: 'auto' }} />
       </a>
 
       <div className="r-nav-links" style={{ display: 'flex', gap: 36, alignItems: 'center' }}>
@@ -42,17 +48,62 @@ function SiteNav({ active = 'home', dark = false }) {
       </div>
 
       {active !== 'contact' ? (
-        <a href="contact.html" style={{
+        <a href="contact.html" className="r-nav-cta" style={{
           fontFamily: 'var(--font-body)', fontSize: 14, fontWeight: 500,
           background: 'var(--sage-deep)', color: 'var(--ivory)',
           border: '1px solid var(--sage-deep)', padding: '11px 24px', borderRadius: 999,
           cursor: 'pointer', letterSpacing: '0.01em', textDecoration: 'none',
         }}>Plan een kennismaking</a>
       ) : (
-        <div style={{ visibility: 'hidden', pointerEvents: 'none', fontFamily: 'var(--font-body)', fontSize: 14, fontWeight: 500, padding: '11px 24px' }}>Plan een kennismaking</div>
+        <div className="r-nav-cta" style={{ visibility: 'hidden', pointerEvents: 'none', fontFamily: 'var(--font-body)', fontSize: 14, fontWeight: 500, padding: '11px 24px' }}>Plan een kennismaking</div>
       )}
+
+      <button className="r-burger" aria-label="Menu" aria-expanded={open} onClick={() => setOpen(!open)} style={{
+        background: 'transparent', border: '1px solid ' + (dark ? 'rgba(245,236,214,0.35)' : 'var(--hairline)'),
+        borderRadius: 999, width: 46, height: 46, cursor: 'pointer',
+        display: 'none', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: 5, padding: 0,
+      }}>
+        <span style={burgerBar(dark, open, 1)}></span>
+        <span style={{ ...burgerBar(dark, open, 2), opacity: open ? 0 : 1 }}></span>
+        <span style={burgerBar(dark, open, 3)}></span>
+      </button>
     </nav>
+
+      <div className="r-drawer" onClick={() => setOpen(false)} style={{
+        position: 'fixed', inset: '0 0 0 0', zIndex: 40,
+        background: 'var(--ivory)',
+        display: 'none', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 4,
+        opacity: open ? 1 : 0, pointerEvents: open ? 'auto' : 'none',
+        transition: 'opacity 250ms cubic-bezier(0.4,0,0.2,1)',
+      }}>
+        <span style={{ fontFamily: 'var(--font-script)', fontSize: 44, color: 'var(--gold-500)', marginBottom: 18, lineHeight: 1 }}>Eens &amp; Altijd</span>
+        {items.map(it => (
+          <a key={it.id} href={it.href} style={{
+            fontFamily: 'var(--font-display)', fontSize: 34, fontWeight: 400,
+            color: active === it.id ? 'var(--gold-500)' : 'var(--ink)',
+            textDecoration: 'none', padding: '14px 24px', minHeight: 44,
+          }}>{it.label}</a>
+        ))}
+        <a href="contact.html" style={{
+          marginTop: 24, fontFamily: 'var(--font-body)', fontSize: 15, fontWeight: 500,
+          background: 'var(--sage-deep)', color: 'var(--ivory)', textDecoration: 'none',
+          padding: '16px 30px', borderRadius: 999,
+        }}>Plan een kennismaking</a>
+      </div>
+    </React.Fragment>
   );
+}
+
+function burgerBar(dark, open, n) {
+  const base = {
+    display: 'block', width: 20, height: 1.5, borderRadius: 2,
+    background: dark ? 'var(--ivory)' : 'var(--ink)',
+    transition: 'transform 250ms cubic-bezier(0.4,0,0.2,1), opacity 200ms',
+  };
+  if (!open) return base;
+  if (n === 1) return { ...base, transform: 'translateY(6.5px) rotate(45deg)' };
+  if (n === 3) return { ...base, transform: 'translateY(-6.5px) rotate(-45deg)' };
+  return base;
 }
 
 /* ---- Footer (burgundy block, like the reference) -------------------- */
@@ -60,14 +111,14 @@ function SiteFooter() {
   return (
     <footer style={footerCSS.wrap}>
       <div style={footerCSS.seal}>
-        <img src="assets/zegel.png" alt="Eens &amp; Altijd monogram" style={footerCSS.sealImg} />
+        <img src="assets/zegel.png" alt="Lakstempel met het monogram van Eens &amp; Altijd" loading="lazy" decoding="async" style={footerCSS.sealImg} />
       </div>
       <div className="r-panel" style={footerCSS.panel}>
         <div style={footerCSS.grain} />
         <div className="r-footer-inner" style={footerCSS.inner}>
           <div style={footerCSS.brandCol}>
             <div style={footerCSS.brand}>
-              <img src="assets/logo-white.png" alt="Eens & Altijd" style={{ height: 224, width: 'auto', maxWidth: '100%' }} />
+              <img src="assets/logo-white.png" alt="Eens &amp; Altijd weddingplanner" loading="lazy" decoding="async" style={{ height: 224, width: 'auto', maxWidth: '100%' }} />
             </div>
             <div style={footerCSS.script}>Zorgeloos stralen in jullie sprookje.</div>
             <p style={footerCSS.tagline}>
@@ -104,7 +155,7 @@ function SiteFooter() {
               </a>
               <div style={{ ...footerCSS.contactItem, cursor: 'default' }}>
                 <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
-                <span>Enschede &amp; omstreken</span>
+                <span>Enschede &amp; heel Twente</span>
               </div>
             </div>
           </div>
@@ -233,7 +284,7 @@ function Eyebrow({ children, color = 'var(--gold-500)', ornament = true }) {
 }
 
 /* ---- Tulle / soft photographic placeholder ----------------------- */
-function PhotoTile({ aspect = '4 / 5', tone = 'rose', caption, style, slotId, slotSrc, photo, overlay, arch }) {
+function PhotoTile({ aspect = '4 / 5', tone = 'rose', caption, style, slotId, slotSrc, photo, alt, overlay, arch }) {
   const tones = {
     rose:    'linear-gradient(135deg, #efe6d5 0%, #e8c8c0 50%, #d49a8e 100%)',
     sage:    'linear-gradient(135deg, #efe6d5 0%, #c9d4be 50%, #7d8a6b 100%)',
@@ -256,6 +307,10 @@ function PhotoTile({ aspect = '4 / 5', tone = 'rose', caption, style, slotId, sl
       background: photo ? `url("${photo}") center/cover no-repeat` : (tones[tone] || tones.rose),
       ...style,
     }}>
+      {photo && <img src={photo} alt={alt || ''} loading="lazy" decoding="async" style={{
+        position: 'absolute', inset: 0, width: '100%', height: '100%',
+        objectFit: 'cover', objectPosition: 'center', display: 'block',
+      }} />}
       {!photo && <div style={{
         position: 'absolute', width: 220, height: 220, borderRadius: '50%',
         filter: 'blur(50px)', background: 'rgba(245,236,214,0.45)',

@@ -1,30 +1,120 @@
-/* Responsive overrides — inline styles win on specificity, so these use !important */
+/* Responsive layer — inline styles win on specificity, so these use !important */
 
+html { -webkit-text-size-adjust: 100%; }
+body { overflow-x: hidden; }
+img, svg, video { max-width: 100%; }
+.r-drawer, .r-burger { display: none; }
+
+/* ---------- Laptop / small desktop: tighten the generous desktop padding ---------- */
+@media (max-width: 1200px) {
+  .r-pad { padding-left: 40px !important; padding-right: 40px !important; }
+  .r-panel { padding: 72px 40px !important; }
+  .r-pad-block { padding: 56px 40px !important; }
+  .r-nav { padding: 16px 32px !important; }
+  .r-nav-links { gap: 26px !important; }
+  .r-nav-logo { height: 74px !important; }
+  .r-4col { gap: 32px !important; }
+  .r-3col { gap: 28px !important; }
+  .r-2col { gap: 40px !important; }
+}
+
+/* ---------- Tablet portrait: drop to two columns before stacking ---------- */
+@media (max-width: 1024px) {
+  .r-4col, .r-7col { grid-template-columns: 1fr 1fr !important; gap: 40px !important; }
+  .r-3col { grid-template-columns: 1fr 1fr !important; gap: 32px !important; }
+  .r-2col { grid-template-columns: 1fr !important; gap: 40px !important; }
+  .r-sticky { position: static !important; }
+}
+
+/* ---------- Phone / small tablet: single column, drawer nav ---------- */
 @media (max-width: 900px) {
   .r-2col, .r-3col, .r-4col, .r-7col {
     grid-template-columns: 1fr !important;
-    gap: 40px !important;
+    gap: 36px !important;
   }
-  .r-4col { gap: 44px !important; }
   .r-footer-inner { grid-template-columns: 1fr !important; gap: 44px !important; }
   .r-footer-cols { grid-template-columns: 1fr 1fr !important; gap: 32px !important; }
   .r-pad { padding-left: 24px !important; padding-right: 24px !important; }
-  .r-pad-block { padding: 48px 28px !important; }
-  .r-panel { padding: 56px 28px !important; }
-  .r-nav { padding: 14px 20px !important; flex-wrap: wrap !important; gap: 12px !important; }
-  .r-nav-links { gap: 20px !important; flex-wrap: wrap !important; }
-  .r-nav-logo { height: 64px !important; }
-  .r-hero-inner { padding: 88px 28px 40px !important; }
-  .r-sticky { position: static !important; }
-  .r-fine { flex-direction: column !important; gap: 12px !important; }
+  .r-pad-block { padding: 40px 24px !important; }
+  .r-panel { padding: 52px 24px !important; }
+  .r-hero-inner { padding: 80px 24px 40px !important; }
+  .r-fine { flex-direction: column !important; gap: 12px !important; align-items: flex-start !important; }
   .r-timeline-img { display: none !important; }
   .r-timeline-list { display: flex !important; }
+
+  /* nav → hamburger + full-screen drawer */
+  .r-nav { padding: 12px 20px !important; }
+  .r-nav-logo { height: 58px !important; }
+  .r-nav-links, .r-nav-cta { display: none !important; }
+  .r-burger { display: flex !important; }
+  .r-drawer { display: flex !important; }
+
+  /* fluid display type */
+  h1 { font-size: clamp(38px, 11vw, 62px) !important; line-height: 1.04 !important; }
+  h2 { font-size: clamp(29px, 7.6vw, 46px) !important; line-height: 1.1 !important; }
+  h3 { font-size: clamp(21px, 5vw, 27px) !important; }
+  blockquote { font-size: clamp(24px, 6.4vw, 38px) !important; line-height: 1.25 !important; }
+  [style*="--font-script"] { font-size: clamp(30px, 9vw, 52px) !important; line-height: 1.12 !important; }
+
+  /* touch targets */
+  a[href], button { min-height: 44px; }
+  a[style*="border-radius: 999px"], a[style*="borderRadius: 999px"] { min-height: 48px; }
 }
 
 @media (min-width: 901px) {
   .r-timeline-list { display: none !important; }
 }
 
+/* ---------- Small phones ---------- */
 @media (max-width: 640px) {
   .r-footer-cols { grid-template-columns: 1fr !important; }
+  .r-pad { padding-left: 18px !important; padding-right: 18px !important; }
+  .r-pad-block { padding: 32px 20px !important; }
+  .r-panel { padding: 44px 20px !important; }
+  .r-hero-inner { padding: 68px 20px 32px !important; }
+  .r-2col, .r-3col, .r-4col, .r-7col { gap: 30px !important; }
+}
+
+@media (max-width: 400px) {
+  .r-pad { padding-left: 14px !important; padding-right: 14px !important; }
+  .r-nav-logo { height: 50px !important; }
+  h1 { font-size: 34px !important; }
+}
+
+/* ---------- Floating badge over the bio photo ---------- */
+@media (max-width: 1024px) {
+  .r-float-badge {
+    position: static !important; width: auto !important;
+    right: auto !important; bottom: auto !important;
+    margin-top: -18px !important;
+  }
+}
+
+/* ---------- Hero ---------- */@media (max-width: 1024px) {
+  .r-hero-bg { left: 8% !important; }
+}
+@media (max-width: 900px) {
+  .r-hero { margin: 0 14px !important; min-height: calc(100svh - 90px) !important; }
+  .r-hero-bg { left: 0 !important; right: 0 !important; -webkit-mask-image: none !important; mask-image: none !important; }
+  .r-hero-inner { padding: 72px 24px 40px !important; }
+  .r-hero-dots { margin-top: 36px !important; }
+}
+@media (max-width: 640px) {
+  .r-hero { margin: 0 10px !important; }
+  .r-hero-inner { padding: 60px 20px 32px !important; }
+}
+
+/* ---------- Landscape phones: shorter viewports ---------- */
+@media (max-height: 520px) and (orientation: landscape) {
+  .r-hero { min-height: 520px !important; }
+  .r-hero-inner { padding-top: 56px !important; padding-bottom: 28px !important; }
+}
+
+/* ---------- Printable legal documents: reflow to viewport on phones ---------- */
+@media (max-width: 900px) {
+  doc-page { --doc-page-w: 100% !important; --doc-page-margin: 22px !important; min-width: 0 !important; padding: 0 !important; }
+  doc-page p, doc-page li { font-size: 15px !important; line-height: 1.75 !important; }
+  doc-page h1 { font-size: clamp(26px, 7vw, 34px) !important; }
+  doc-page h2 { font-size: 19px !important; }
+  doc-page img[alt="Eens & Altijd"] { height: 96px !important; }
 }
