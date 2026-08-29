@@ -144,6 +144,24 @@ function SiteFooter() {
   );
 }
 
+function WhatsAppFloat() {
+  return (
+    <a href="https://wa.me/31650537118" target="_blank" rel="noopener" aria-label="Stuur een WhatsApp-bericht" style={waFloat.btn} className="r-glow-hover">
+      <svg viewBox="0 0 32 32" width="30" height="30" fill="currentColor" aria-hidden="true"><path d="M16.004 3C9.377 3 4 8.377 4 15.004c0 2.386.694 4.612 1.897 6.478L4.6 26.6l5.234-1.253a11.94 11.94 0 0 0 6.17 1.658c6.627 0 12.004-5.377 12.004-12.001C28.008 8.377 22.631 3 16.004 3zm7.06 17.006c-.3.845-1.502 1.577-2.086 1.667-.535.082-1.203.117-1.94-.123-.446-.147-1.018-.34-1.75-.667-3.077-1.328-5.086-4.416-5.24-4.622-.155-.206-1.24-1.65-1.24-3.146 0-1.495.784-2.23 1.06-2.533.278-.303.605-.379.807-.379.202 0 .404.002.58.011.186.009.436-.07.681.52.253.61.86 2.096.936 2.248.076.152.126.33.025.532-.1.202-.15.328-.303.505-.152.177-.32.395-.457.53-.152.152-.31.317-.133.622.177.303.788 1.298 1.69 2.104 1.163 1.037 2.144 1.36 2.454 1.512.31.152.49.126.674-.076.184-.202.782-.909.99-1.222.21-.31.42-.26.71-.156.29.101 1.826.86 2.14 1.017.31.152.518.227.593.354.076.126.076.732-.224 1.577z"/></svg>
+    </a>
+  );
+}
+
+const waFloat = {
+  btn: {
+    position: 'fixed', bottom: 24, right: 24, zIndex: 40,
+    width: 56, height: 56, borderRadius: '999px',
+    background: 'var(--sage-deep)', color: 'var(--ivory)',
+    display: 'flex', alignItems: 'center', justifyContent: 'center',
+    boxShadow: '0 8px 20px rgba(43,33,23,0.25)', textDecoration: 'none',
+  },
+};
+
 const footerCSS = {
   wrap: {
     background: 'var(--pearl)', padding: '72px 32px 40px',
@@ -323,6 +341,7 @@ const phCSS = {
 window.PageHeader = PageHeader;
 window.SiteNav = SiteNav;
 window.SiteFooter = SiteFooter;
+window.WhatsAppFloat = WhatsAppFloat;
 window.Eyebrow = Eyebrow;
 window.PhotoTile = PhotoTile;
 window.GoldButton = GoldButton;
