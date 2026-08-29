@@ -180,7 +180,6 @@ function HomeTimeline() {
   return (
     <section className="r-pad" style={htl.wrap}>
       <h2 style={htl.title}>Van <em style={htl.italic}>'Er was eens…'</em> tot het proosten op de liefde</h2>
-      <img src="assets/tijdlijn.png" className="r-timeline-img" loading="lazy" decoding="async" alt="Tijdlijn van het plannen van een bruiloft — van de eerste kennismaking tot het proosten op de liefde" style={htl.img} />
       <div className="r-timeline-list" style={htl.list}>
         {[
           { n: "01", t: "Kennismaken online", s: "Waar het sprookje begint", b: "We maken online kennis en jullie vertellen over jullie wensen, ideeën en dromen. Ik luister, stel vragen en ontdek graag of er die fijne, magische klik is." },
@@ -212,13 +211,12 @@ const htl = {
     textWrap: 'pretty',
   },
   italic: { fontStyle: 'italic', color: 'var(--gold-500)' },
-  img: { display: 'block', width: '100%', height: 'auto', borderRadius: 'var(--r-lg)' },
-  list: { display: 'none', flexDirection: 'column', gap: 40 },
-  step: { textAlign: 'center', paddingBottom: 36, borderBottom: '1px solid var(--hairline)' },
-  stepNum: { fontFamily: 'var(--font-display)', fontSize: 34, color: 'var(--gold-500)', lineHeight: 1, marginBottom: 10 },
+  list: { display: 'flex', flexDirection: 'column', gap: 56, maxWidth: 650, margin: '0 auto' },
+  step: { textAlign: 'center', paddingTop: 8, paddingBottom: 40, borderBottom: '1px solid var(--hairline)' },
+  stepNum: { fontFamily: 'var(--font-display)', fontSize: 34, color: 'var(--gold-500)', lineHeight: 1, marginBottom: 18, letterSpacing: '0.12em' },
   stepTitle: { fontFamily: 'var(--font-display)', fontWeight: 500, fontSize: 21, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--ink)', margin: '0 0 8px' },
   stepScript: { fontFamily: 'var(--font-display)', fontStyle: 'italic', fontSize: 17, color: 'var(--gold-600)', marginBottom: 14 },
-  stepBody: { fontFamily: 'var(--font-body)', fontSize: 15, lineHeight: 1.7, color: 'var(--ink-soft)', margin: 0 },
+  stepBody: { fontFamily: 'var(--font-body)', fontSize: 15, lineHeight: 1.7, color: 'var(--ink-soft)', margin: '0 auto', maxWidth: 560 },
 };
 
 /* ---- Photo gallery (matching the right-side grid in screenshot) ----*/

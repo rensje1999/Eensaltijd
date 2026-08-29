@@ -1,8 +1,7 @@
 function ContactHero() {
   return (
     <section className="r-pad" style={ch.wrap}>
-      <div style={ch.tulle} />
-      <div style={ch.inner}>
+          <div style={ch.inner}>
         <div style={ch.eyebrow}>◆ &nbsp; Contact</div>
         <h1 style={ch.title}>Vertel mij over<br/><em style={ch.italic}>jullie dag.</em></h1>
         <div style={ch.script}>Een vrijblijvende kennismaking</div>
@@ -15,14 +14,57 @@ function ContactHero() {
   );
 }
 const ch = {
-  wrap: { position: 'relative', overflow: 'hidden', padding: '112px 56px 96px', textAlign: 'center', margin: '12px 32px 0', borderRadius: 'var(--r-lg)' },
-  tulle: { position: 'absolute', inset: 0, pointerEvents: 'none', background: 'linear-gradient(180deg, rgba(43,33,23,0.46), rgba(43,33,23,0.66)), url("assets/contact-zonsondergang.png") center 40%/cover no-repeat' },
+  wrap: { position: 'relative', padding: '112px 56px 96px', textAlign: 'center' },
   inner: { position: 'relative', maxWidth: 800, margin: '0 auto' },
-  eyebrow: { fontFamily: 'var(--font-body)', fontSize: 12, fontWeight: 500, letterSpacing: '0.24em', textTransform: 'uppercase', color: 'var(--gold-200)', marginBottom: 24 },
-  title: { fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 'clamp(48px, 6.5vw, 92px)', lineHeight: 1.02, color: 'var(--ivory)', margin: 0, letterSpacing: '-0.01em' },
-  italic: { fontStyle: 'italic', color: 'var(--gold-200)' },
-  script: { fontFamily: 'var(--font-script)', fontSize: 'clamp(36px, 4vw, 56px)', color: 'var(--gold-200)', marginTop: 12, lineHeight: 1.15, paddingBottom: 4 },
-  body: { fontFamily: 'var(--font-body)', fontSize: 17, lineHeight: 1.65, color: 'rgba(245,236,214,0.88)', maxWidth: 540, margin: '32px auto 0' },
+  eyebrow: { fontFamily: 'var(--font-body)', fontSize: 12, fontWeight: 500, letterSpacing: '0.24em', textTransform: 'uppercase', color: 'var(--gold-600)', marginBottom: 24 },
+  title: { fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 'clamp(48px, 6.5vw, 92px)', lineHeight: 1.02, color: 'var(--ink)', margin: 0, letterSpacing: '-0.01em' },
+  italic: { fontStyle: 'italic', color: 'var(--gold-500)' },
+  script: { fontFamily: 'var(--font-script)', fontSize: 'clamp(36px, 4vw, 56px)', color: 'var(--gold-500)', marginTop: 12, lineHeight: 1.15, paddingBottom: 4 },
+  body: { fontFamily: 'var(--font-body)', fontSize: 17, lineHeight: 1.65, color: 'var(--ink-soft)', maxWidth: 540, margin: '32px auto 0' },
+};
+
+function ContactPlanner() {
+  return (
+    <section className="r-pad r-planner" style={cp.wrap}>
+      <div className="r-planner-text" style={cp.textCol}>
+        <h2 style={cp.script}>Hoi, ik ben Elise</h2>
+        <p style={cp.body}>
+          Vanaf het eerste berichtje tot jullie laatste dans ben ik degene die
+          met jullie meedenkt.
+        </p>
+        <svg className="r-planner-arrow" style={cp.arrow} width="180" height="280" viewBox="0 0 90 140" fill="none" aria-hidden="true">
+          <path d="M14 6c2 44 8 78 30 106" stroke="var(--gold-400)" strokeWidth="2" strokeLinecap="round" fill="none"/>
+          <path d="M28 96c4 9 10 15 18 18" stroke="var(--gold-400)" strokeWidth="2" strokeLinecap="round" fill="none"/>
+          <path d="M46 106c-6 6-12 9-18 8" stroke="var(--gold-400)" strokeWidth="2" strokeLinecap="round" fill="none"/>
+        </svg>
+      </div>
+      <div className="r-planner-photo r-float-polaroid" style={cp.photoOuter}>
+        <div style={cp.tape} />
+        <div className="r-glow-hover" style={cp.polaroid}>
+          <image-slot id="contact-elise-photo" shape="rect" fit="cover" placeholder="Foto van Elise" src="uploads/20260728_142957.jpg" style={cp.photoSlot}></image-slot>
+        </div>
+      </div>
+    </section>
+  );
+}
+const cp = {
+  wrap: { maxWidth: 1100, margin: '0 auto', padding: '0 56px 96px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 48 },
+  textCol: { flex: '1 1 380px', position: 'relative' },
+  script: { fontFamily: 'var(--font-script)', fontSize: 'clamp(42px, 5vw, 60px)', color: 'var(--gold-500)', margin: 0, lineHeight: 1.2 },
+  body: { fontFamily: 'var(--font-body)', fontSize: 16, lineHeight: 1.7, color: 'var(--ink-soft)', margin: '20px 0 0', maxWidth: 400 },
+  arrow: { marginTop: 20, transform: 'scaleX(-1)' },
+  photoOuter: { position: 'relative', flex: '0 0 300px', transform: 'rotate(3deg)' },
+  // class r-float-polaroid added at usage for the floating animation
+  tape: {
+    position: 'absolute', top: -14, left: '50%', transform: 'translateX(-50%) rotate(-4deg)',
+    width: 90, height: 30, background: 'linear-gradient(180deg, rgba(212,184,122,0.85), rgba(184,146,74,0.75))',
+    opacity: 0.85, zIndex: 2, boxShadow: '0 1px 2px rgba(0,0,0,0.15)',
+  },
+  polaroid: {
+    background: '#fff', padding: '18px 18px 60px', borderRadius: 2,
+    boxShadow: '0 22px 40px -12px rgba(43,33,23,0.28), 0 4px 10px rgba(43,33,23,0.12)',
+  },
+  photoSlot: { width: '100%', height: 360, display: 'block' },
 };
 
 function ContactForm() {
@@ -53,7 +95,6 @@ function ContactForm() {
     <section className="r-pad" style={cf.wrap}>
       <div className="r-2col" style={cf.grid}>
         <div style={cf.hubCol}>
-          <Eyebrow>Kies wat bij jullie past</Eyebrow>
           <h2 style={cf.title}>Twee manieren<br/><em style={{fontStyle:'italic', color:'var(--gold-500)'}}>om hallo te zeggen.</em></h2>
           <div style={cf.hubList}>
             {options.map((o, i) => (
@@ -75,7 +116,7 @@ function ContactForm() {
         </div>
 
         {/* aside */}
-        <aside className="r-sticky r-pad-block" style={cf.aside}>
+        <aside className="r-sticky r-pad-block r-glow-hover" style={cf.aside}>
           <div style={cf.asideEye}>◆ &nbsp; Of bereik mij direct</div>
           <div style={cf.asideRow}>
             <div style={cf.asideLabel}>E-mail</div>
@@ -204,4 +245,5 @@ if (typeof document !== 'undefined' && !document.getElementById('contact-extra-c
 }
 
 window.ContactHero = ContactHero;
+window.ContactPlanner = ContactPlanner;
 window.ContactForm = ContactForm;

@@ -48,7 +48,7 @@ function SiteNav({ active = 'home', dark = false }) {
       </div>
 
       {active !== 'contact' ? (
-        <a href="contact.html" className="r-nav-cta" style={{
+        <a href="contact.html" className="r-nav-cta r-sparkle-btn" style={{
           fontFamily: 'var(--font-body)', fontSize: 14, fontWeight: 500,
           background: 'var(--sage-deep)', color: 'var(--ivory)',
           border: '1px solid var(--sage-deep)', padding: '11px 24px', borderRadius: 999,
@@ -106,165 +106,60 @@ function burgerBar(dark, open, n) {
   return base;
 }
 
-/* ---- Footer (burgundy block, like the reference) -------------------- */
+/* ---- Footer (centered, minimalist) ----------------------------------- */
 function SiteFooter() {
+  const items = [
+    { label: 'Home', href: 'index.html' },
+    { label: 'Aanbod', href: 'aanbod.html' },
+    { label: 'Over mij', href: 'over.html' },
+    { label: 'Contact', href: 'contact.html' },
+  ];
   return (
     <footer style={footerCSS.wrap}>
-      <div className="r-footer-seal" style={footerCSS.seal}>
-        <img src="assets/zegel.png" alt="Lakstempel met het monogram van Eens &amp; Altijd" loading="lazy" decoding="async" style={footerCSS.sealImg} />
-      </div>
-      <div className="r-panel" style={footerCSS.panel}>
-        <div style={footerCSS.grain} />
-        <div className="r-footer-inner" style={footerCSS.inner}>
-          <div style={footerCSS.brandCol}>
-            <div className="r-footer-brand" style={footerCSS.brand}>
-              <img src="assets/logo-white.png" alt="Eens &amp; Altijd weddingplanner" loading="lazy" decoding="async" style={{ height: 224, width: 'auto', maxWidth: '100%' }} />
-            </div>
-            <div className="r-footer-script" style={footerCSS.script}>Zorgeloos stralen in jullie sprookje.</div>
-            <p className="r-footer-tagline" style={footerCSS.tagline}>
-              Eens in het echt. Altijd in jullie hart.
-            </p>
-          </div>
-
-          <div>
-            <div style={footerCSS.colHead}>Navigatie</div>
-            <a style={footerCSS.colLink} href="index.html">Home</a>
-            <a style={footerCSS.colLink} href="aanbod.html">Aanbod</a>
-            <a style={footerCSS.colLink} href="over.html">Over mij</a>
-            <a style={footerCSS.colLink} href="contact.html">Contact</a>
-          </div>
-
-          <div>
-            <div style={footerCSS.colHead}>Volg mij</div>
-            <a style={{ ...footerCSS.colLink, display: 'inline-flex', alignItems: 'center', gap: 8 }} href="https://www.instagram.com/eensenaltijd_weddingplanner?utm_source=qr&amp;igsh=eGkxbmR0OXpwdThy" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/></svg>
-              Instagram
-            </a>
-          </div>
-
-          <div>
-            <div style={footerCSS.colHead}>Contact</div>
-            <div style={footerCSS.contactList}>
-              <a style={footerCSS.contactItem} href="mailto:eensenaltijd@gmail.com?subject=Aanvraag%20via%20de%20website">
-                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M3.5 7.5 12 13l8.5-5.5"/></svg>
-                <span>eensenaltijd@gmail.com</span>
-              </a>
-              <a style={footerCSS.contactItem} href="https://wa.me/31650537118" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12.04 2.75a9.1 9.1 0 0 0-7.8 13.79l-1.1 3.98 4.1-1.07a9.1 9.1 0 1 0 4.8-16.7z"/><path d="M8.9 7.6h.9l1.1 2.5-1 1a6.3 6.3 0 0 0 3.1 3.1l1-1 2.5 1.1v.9c0 .8-.7 1.5-1.6 1.5A8.4 8.4 0 0 1 7.4 9.2c0-.9.6-1.6 1.5-1.6z"/></svg>
-                <span>WhatsApp</span>
-              </a>
-              <div style={{ ...footerCSS.contactItem, cursor: 'default' }}>
-                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
-                <span>Enschede &amp; heel Twente</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div style={footerCSS.divider} />
-        <div className="r-fine" style={footerCSS.fine}>
-          <span style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
-            <span>© {new Date().getFullYear()} Eens &amp; Altijd</span>
-            <span>KvK 42113689</span>
-            <span>BTW NL005504212B65</span>
-          </span>
-          <span className="r-fine-links" style={{ display: 'flex', gap: 28, flexWrap: 'wrap' }}>
-            <a href="privacy.html" style={footerCSS.fineLink}>Privacy</a>
-            <a href="voorwaarden.html" style={footerCSS.fineLink}>Voorwaarden</a>
-            <a href="cookiebeleid.html" style={footerCSS.fineLink}>Cookiebeleid</a>
-            <a href="disclaimer.html" style={footerCSS.fineLink}>Disclaimer</a>
-          </span>
-        </div>
+      <img src="assets/logo.png" alt="Eens &amp; Altijd — weddingplanner in Twente" loading="lazy" decoding="async" style={footerCSS.logo} />
+      <nav className="r-footer-nav" style={footerCSS.nav}>
+        {items.map((it, i) => (
+          <React.Fragment key={it.label}>
+            {i > 0 && <span className="r-footer-dot" style={footerCSS.dot}>•</span>}
+            <a href={it.href} style={footerCSS.navLink}>{it.label}</a>
+          </React.Fragment>
+        ))}
+      </nav>
+      <p style={footerCSS.slogan}>Eens in het echt. <em>Altijd in jullie hart.</em></p>
+      <div style={footerCSS.divider} />
+      <div className="r-fine" style={footerCSS.fine}>
+        <span style={{ display: 'flex', gap: 18, flexWrap: 'wrap', justifyContent: 'center' }}>
+          <span>© {new Date().getFullYear()} Eens &amp; Altijd</span>
+          <span>KvK 42113689</span>
+          <span>BTW NL005504212B65</span>
+        </span>
+        <span className="r-fine-links" style={{ display: 'flex', gap: 24, flexWrap: 'wrap', justifyContent: 'center' }}>
+          <a href="privacy.html" style={footerCSS.fineLink}>Privacy</a>
+          <a href="voorwaarden.html" style={footerCSS.fineLink}>Voorwaarden</a>
+          <a href="cookiebeleid.html" style={footerCSS.fineLink}>Cookiebeleid</a>
+          <a href="disclaimer.html" style={footerCSS.fineLink}>Disclaimer</a>
+        </span>
       </div>
     </footer>
   );
 }
 
 const footerCSS = {
-  wrap: { background: 'var(--ivory)', padding: '0 32px 32px' },
-  seal: {
-    display: 'flex', justifyContent: 'center', alignItems: 'center',
-    padding: '8px 0 40px',
+  wrap: {
+    background: 'var(--pearl)', padding: '72px 32px 40px',
+    display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center',
   },
-  sealImg: { height: 96, width: 'auto', opacity: 0.85 },
-  panel: {
-    position: 'relative', overflow: 'hidden',
-    maxWidth: 1320, margin: '0 auto',
-    background:
-      'linear-gradient(180deg, rgba(43,33,23,0.55), rgba(43,33,23,0.78)),' +
-      'url("assets/header-ceremonie.png") center/cover no-repeat',
-    borderRadius: 'var(--r-lg)',
-    padding: '80px 72px 40px',
-  },
-  grain: {
-    position: 'absolute', inset: 0, pointerEvents: 'none',
-    backgroundImage: 'var(--grain)', opacity: 0.35, mixBlendMode: 'overlay',
-  },
-  inner: {
-    position: 'relative',
-    display: 'grid',
-    gridTemplateColumns: 'minmax(230px,1.6fr) minmax(70px,0.7fr) minmax(120px,0.8fr) minmax(170px,1.4fr)',
-    gap: 40,
-  },
-  brandCol: { },
-  brand: {
-    fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 44,
-    background: 'var(--grad-gold)',
-    WebkitBackgroundClip: 'text', backgroundClip: 'text',
-    WebkitTextFillColor: 'transparent', color: 'transparent',
-    letterSpacing: '-0.01em', marginBottom: 6, whiteSpace: 'nowrap',
-  },
-  script: {
-    fontFamily: 'var(--font-script)', fontSize: 38, color: 'var(--gold-200)',
-    lineHeight: 1.3, marginBottom: 24, paddingBottom: 4, whiteSpace: 'nowrap',
-  },
-  tagline: {
-    fontFamily: 'var(--font-body)', fontSize: 14, lineHeight: 1.6,
-    color: 'rgba(245,236,214,0.7)', maxWidth: 360, margin: 0, whiteSpace: 'nowrap',
-  },
-  colHead: {
-    fontFamily: 'var(--font-body)', fontSize: 11, fontWeight: 500,
-    letterSpacing: '0.22em', textTransform: 'uppercase',
-    color: 'var(--gold-200)', marginBottom: 22,
-  },
-  colLink: {
-    display: 'block', fontFamily: 'var(--font-body)', fontSize: 14,
-    color: 'rgba(245,236,214,0.78)', marginBottom: 12, minWidth: 0,
-    textDecoration: 'none',
-  },
-  colLinkPlain: {
-    fontFamily: 'var(--font-body)', fontSize: 14,
-    color: 'rgba(245,236,214,0.78)', whiteSpace: 'nowrap',
-  },
-  contactRow: {
-    display: 'flex', alignItems: 'flex-start', gap: 10, marginBottom: 12, minWidth: 0,
-  },
-  contactList: { display: 'flex', flexDirection: 'column', gap: 12 },
-  contactItem: {
-    display: 'flex', alignItems: 'center', gap: 10,
-    fontFamily: 'var(--font-body)', fontSize: 14,
-    color: 'rgba(245,236,214,0.78)', textDecoration: 'none',
-  },
-  emailLink: { wordBreak: 'normal', overflowWrap: 'break-word', flex: '1 1 0%', width: '100%', minWidth: 0, fontSize: 13 },
-  icon: { color: 'var(--gold-200)', fontSize: 13, width: 16, textAlign: 'center', marginTop: 2, flexShrink: 0 },
-  waBtn: {
-    display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-    width: 26, height: 26, borderRadius: 999, textDecoration: 'none',
-    background: '#25D366', color: '#0b2f18', flexShrink: 0,
-  },
-  divider: {
-    height: 1, background: 'rgba(245,236,214,0.14)',
-    margin: '56px 0 24px', position: 'relative',
-  },
+  logo: { height: 64, width: 'auto', marginBottom: 28 },
+  nav: { display: 'flex', alignItems: 'center', gap: 18, flexWrap: 'wrap', justifyContent: 'center', marginBottom: 28 },
+  navLink: { fontFamily: 'var(--font-body)', fontSize: 14, letterSpacing: '0.03em', color: 'var(--ink)', textDecoration: 'none' },
+  dot: { color: 'var(--gold-400)', fontSize: 10 },
+  slogan: { fontFamily: 'var(--font-display)', fontStyle: 'italic', fontSize: 'clamp(20px, 2.2vw, 26px)', color: 'var(--gold-600)', margin: '0 0 36px', lineHeight: 1.4 },
+  divider: { width: '100%', maxWidth: 480, height: 1, background: 'var(--hairline)', marginBottom: 24 },
   fine: {
-    position: 'relative',
-    display: 'flex', justifyContent: 'space-between',
-    fontFamily: 'var(--font-body)', fontSize: 12,
-    color: 'rgba(245,236,214,0.55)',
+    display: 'flex', flexDirection: 'column', gap: 12,
+    fontFamily: 'var(--font-body)', fontSize: 12, color: 'var(--ink-mute)',
   },
-  fineLink: {
-    color: 'rgba(245,236,214,0.55)', textDecoration: 'none',
-  },
+  fineLink: { color: 'var(--ink-mute)', textDecoration: 'none' },
 };
 
 /* ---- Eyebrow + section header ------------------------------------ */

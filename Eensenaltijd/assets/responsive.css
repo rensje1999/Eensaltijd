@@ -39,8 +39,6 @@ img, svg, video { max-width: 100%; }
   .r-panel { padding: 52px 24px !important; }
   .r-hero-inner { padding: 80px 24px 40px !important; }
   .r-fine { flex-direction: column !important; gap: 12px !important; align-items: flex-start !important; }
-  .r-timeline-img { display: none !important; }
-  .r-timeline-list { display: flex !important; }
 
   /* nav → hamburger + full-screen drawer */
   .r-nav { padding: 12px 20px !important; }
@@ -59,10 +57,6 @@ img, svg, video { max-width: 100%; }
   /* touch targets */
   a[href], button { min-height: 44px; }
   a[style*="border-radius: 999px"], a[style*="borderRadius: 999px"] { min-height: 48px; }
-}
-
-@media (min-width: 901px) {
-  .r-timeline-list { display: none !important; }
 }
 
 /* ---------- Small phones ---------- */
@@ -121,6 +115,29 @@ img, svg, video { max-width: 100%; }
 @media (max-width: 640px) {
   .r-footer-brand { font-size: 30px !important; }
   .r-footer-script { font-size: 25px !important; }
+}
+
+/* ---------- Footer: stacked mobile layout ---------- */@media (max-width: 768px) {
+  .r-footer-inner { display: flex !important; flex-direction: column !important; align-items: center !important; text-align: center !important; gap: 32px !important; }
+  .r-footer-col { display: flex !important; flex-direction: column !important; align-items: center !important; text-align: center !important; gap: 10px !important; }
+  .r-footer-brand, .r-footer-script, .r-footer-tagline { text-align: center !important; }
+  .r-footer-contact-list { align-items: center !important; }
+  .r-fine { flex-direction: column !important; align-items: center !important; text-align: center !important; gap: 14px !important; margin-top: 8px !important; }
+  .r-fine > span { justify-content: center !important; text-align: center !important; font-size: 12px !important; }
+  .r-fine-links { justify-content: center !important; }
+}
+
+@media (max-width: 480px) {
+  .r-footer-nav { flex-direction: column !important; gap: 12px !important; }
+  .r-footer-nav .r-footer-dot { display: none !important; }
+}
+
+/* ---------- Contact planner photo ---------- */
+@media (max-width: 768px) {
+  .r-planner { flex-direction: column !important; text-align: center !important; gap: 28px !important; }
+  .r-planner-text { align-items: center !important; display: flex !important; flex-direction: column !important; }
+  .r-planner-photo { flex: none !important; margin: 0 auto !important; }
+  .r-planner-arrow { display: none !important; }
 }
 
 /* ---------- Aanbod: pricing cards ---------- */

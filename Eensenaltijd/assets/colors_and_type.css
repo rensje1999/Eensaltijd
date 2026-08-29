@@ -228,3 +228,28 @@ a:hover { color: var(--gold-600); }
   margin: .02em .04em 0 0;
   color: var(--brass);
 }
+
+/* ---------- Fairytale micro-interactions ----------------------------- */
+img:not(.r-nav-logo), .r-glow-hover {
+  transition: box-shadow .5s ease, transform .5s ease;
+}
+img:not(.r-nav-logo):hover, .r-glow-hover:hover {
+  box-shadow: 0 10px 30px rgba(212,175,55,0.2);
+}
+
+@keyframes r-float {
+  0%, 100% { transform: rotate(3deg) translateY(0); }
+  50% { transform: rotate(3deg) translateY(-8px); }
+}
+.r-float-polaroid { animation: r-float 4.5s ease-in-out infinite; }
+
+.r-sparkle-btn { position: relative; overflow: visible; }
+.r-sparkle-btn::before, .r-sparkle-btn::after {
+  content: '\2726'; position: absolute; color: var(--brass);
+  font-size: 12px; opacity: 0; pointer-events: none;
+  transition: opacity .4s ease, transform .5s ease;
+}
+.r-sparkle-btn::before { top: -6px; left: 14%; transform: scale(.4) rotate(0deg); }
+.r-sparkle-btn::after { bottom: -8px; right: 16%; transform: scale(.4) rotate(0deg); }
+.r-sparkle-btn:hover::before { opacity: .9; transform: scale(1) rotate(20deg); }
+.r-sparkle-btn:hover::after { opacity: .9; transform: scale(.8) rotate(-15deg); transition-delay: .1s; }

@@ -75,7 +75,7 @@ function PricingTiers() {
       tag: 'Trouwambtenaar',
       price: '',
       sub: 'De ceremonie · op de dag zelf',
-      bg: 'linear-gradient(135deg, #f3e6da, #e4c9ab 55%, #cf9f6f)', border: '#cf9f6f', text: 'var(--ink)', muted: 'rgba(43,33,23,0.65)',
+      bg: 'linear-gradient(135deg, #f5f7f0, #e4e8d8 55%, #c9d1b3)', border: '#c9d1b3', text: 'var(--ink)', muted: 'rgba(43,33,23,0.65)',
       btn: 'dark',
       featured: false,
       features: [
@@ -89,7 +89,7 @@ function PricingTiers() {
       tag: 'Ceremoniemeester',
       price: '',
       sub: 'De laatste 3 maanden · dagcoördinatie',
-      bg: 'linear-gradient(135deg, #f4f4f2, #dcdcd8 55%, #c7c7c2)', border: '#c7c7c2', text: 'var(--ink)', muted: 'rgba(43,33,23,0.65)',
+      bg: 'linear-gradient(135deg, #eef1e6, #cfd9b8 55%, #a8b48c)', border: '#a8b48c', text: 'var(--ink)', muted: 'rgba(43,33,23,0.65)',
       btn: 'light',
       featured: false,
       features: [
@@ -107,10 +107,10 @@ function PricingTiers() {
       tag: 'Full-service weddingplanner',
       price: '',
       sub: 'De complete organisatie · 12+ maanden',
-      bg: 'var(--grad-gold-soft)', border: 'var(--gold-500)', text: 'var(--ink)', muted: 'rgba(43,33,23,0.7)',
+      bg: 'linear-gradient(135deg, #e2e7d5, #b3bd93 55%, #747e59)', border: '#747e59', text: 'var(--ink)', muted: 'rgba(43,33,23,0.7)',
       btn: 'light',
       featured: true,
-      includes: 'Dit pakket kan in combinatie met pakket Zilver en Brons',
+      includes: 'Dit pakket kan in combinatie met de andere twee pakketten',
       groups: [
         { head: 'De volledige planning', items: [
           '12+ maanden volledige organisatie',
@@ -142,7 +142,6 @@ function PricingTiers() {
           }}>
             {t.name === 'Goud' && <div className="goud-shine-sweep" />}
             <div style={{ ...pt.eyebrow, color: t.featured ? 'var(--gold-600)' : 'var(--gold-500)' }}>{t.tag}</div>
-            <h3 style={{ ...pt.name, color: t.text }}>{t.name}</h3>
             {t.price && <div style={{ ...pt.price, color: t.text }}>{t.price}</div>}
             <div style={{ ...pt.sub, color: t.muted, marginTop: t.price ? 0 : 16 }}>{t.sub}</div>
             {t.includes && (
@@ -198,7 +197,7 @@ const pt = {
     display: 'flex', flexDirection: 'column', height: '100%',
   },
   eyebrow: {
-    fontFamily: 'var(--font-body)', fontSize: 11, fontWeight: 500,
+    fontFamily: 'var(--font-body)', fontSize: 22, fontWeight: 500,
     letterSpacing: '0.24em', textTransform: 'uppercase', marginBottom: 16,
   },
   badge: {
