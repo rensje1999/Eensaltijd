@@ -25,7 +25,7 @@ function HomeHero() {
           <em style={hh.italic}>Altijd in jullie hart.</em>
         </h1>
         <div style={hh.script}>Zorgeloos stralen in jullie eigen sprookje</div>
-        <div style={hh.actions}>
+        <div style={hh.actions} className="r-hero-actions">
           <GoldButton href="aanbod.html" variant="beige">Bekijk mijn aanbod</GoldButton>
           <GoldButton href="contact.html" variant="primary" style={{ background: 'var(--sage-deep)', color: 'var(--ivory)', border: '1px solid var(--sage-deep)', boxShadow: 'none' }}>Plan een kennismaking</GoldButton>
         </div>

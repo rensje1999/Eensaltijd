@@ -88,6 +88,8 @@ function SiteNav({ active = 'home', dark = false }) {
           marginTop: 24, fontFamily: 'var(--font-body)', fontSize: 15, fontWeight: 500,
           background: 'var(--sage-deep)', color: 'var(--ivory)', textDecoration: 'none',
           padding: '16px 30px', borderRadius: 999,
+          display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center',
+          width: '80%', maxWidth: 320, boxSizing: 'border-box',
         }}>Plan een kennismaking</a>
       </div>
     </React.Fragment>

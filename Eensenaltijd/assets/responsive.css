@@ -96,6 +96,8 @@ img, svg, video { max-width: 100%; }
 @media (max-width: 640px) {
   .r-hero { margin: 0 10px !important; }
   .r-hero-inner { padding: 60px 20px 32px !important; }
+  .r-hero-actions { flex-direction: column !important; align-items: stretch !important; width: 100% !important; }
+  .r-hero-actions a { width: 100% !important; justify-content: center !important; box-sizing: border-box !important; }
 }
 
 /* ---------- Landscape phones: shorter viewports ---------- */
