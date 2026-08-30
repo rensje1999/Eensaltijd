@@ -35,7 +35,7 @@ const ah = {
   },
   title: {
     fontFamily: 'var(--font-display)', fontWeight: 400,
-    fontSize: 'clamp(48px, 6.5vw, 92px)', lineHeight: 1.02,
+    fontSize: 'clamp(48px, 6.5vw, 92px)', lineHeight: 1.08,
     color: 'var(--ink)', margin: 0, letterSpacing: '-0.01em',
   },
   italic: { fontStyle: 'italic', color: 'var(--gold-500)' },
@@ -47,21 +47,6 @@ const ah = {
 };
 
 function PricingTiers() {
-  React.useEffect(() => {
-    if (document.getElementById('goud-shine-style')) return;
-    const s = document.createElement('style');
-    s.id = 'goud-shine-style';
-    s.textContent = `
-      .goud-shine-sweep{position:absolute;top:0;left:-60%;width:40%;height:100%;
-        background:linear-gradient(100deg,rgba(255,255,255,0) 0%,rgba(255,255,255,0.55) 50%,rgba(255,255,255,0) 100%);
-        animation:goud-sweep 5s ease-in-out 1;pointer-events:none;}
-      @keyframes goud-sweep{
-        0%{left:-60%} 10%{left:130%} 10.01%{left:-60%}
-        35%{left:-60%} 45%{left:130%} 45.01%{left:-60%}
-        70%{left:-60%} 80%{left:130%} 100%{left:130%}
-      }`;
-    document.head.appendChild(s);
-  }, []);
   const Check = () => (
     <span style={{
       width: 18, color: 'var(--brass)', fontSize: 12, lineHeight: 1.6,
@@ -129,52 +114,49 @@ function PricingTiers() {
   ];
   const order = ['Zilver', 'Goud', 'Brons'];
   const sortedTiers = [...tiers].sort((a, b) => order.indexOf(a.name) - order.indexOf(b.name));
+  const accents = { Brons: 'var(--sage-light, #9db89b)', Zilver: 'var(--gold-400)', Goud: 'var(--sage-deep, #747e59)' };
   return (
     <section className="r-pad" style={pt.wrap}>
-      <div className="r-3col" style={pt.grid}>
-        {sortedTiers.map((t) => (
-          <article key={t.name} className={'r-pricing-card' + (t.name === 'Goud' ? ' goud-shine' : '')} style={{
-            ...pt.card,
-            background: t.bg, color: t.text,
-            border: t.featured ? `2px solid ${t.border}` : `1px solid ${t.border}`,
-            boxShadow: t.featured ? 'var(--shadow-2)' : 'none',
-            position: 'relative', overflow: 'hidden',
-          }}>
-            {t.name === 'Goud' && <div className="goud-shine-sweep" />}
-            <div style={{ ...pt.eyebrow, color: t.featured ? 'var(--gold-600)' : 'var(--gold-500)' }}>{t.tag}</div>
-            {t.price && <div style={{ ...pt.price, color: t.text }}>{t.price}</div>}
-            <div style={{ ...pt.sub, color: t.muted, marginTop: t.price ? 0 : 16 }}>{t.sub}</div>
-            {t.includes && (
-              <div style={pt.includes}><span style={{ color: 'var(--brass)' }}>✦</span> {t.includes}</div>
-            )}
-            <div style={{ ...pt.divider, background: t.featured ? 'rgba(43,33,23,0.12)' : 'var(--hairline)' }} />
-            <ul style={{ ...pt.list, flexGrow: 1 }}>
-              {t.groups
-                ? t.groups.map((g, gi) => (
-                    <React.Fragment key={gi}>
-                      <li style={{ ...pt.groupHead, marginTop: gi ? 16 : 0 }}>{g.head}</li>
-                      {g.items.map((f, j) => (
-                        <li key={j} style={{ ...pt.feat, color: t.muted }}>
+      <div className="r-pricing-grid" style={pt.grid}>        {sortedTiers.map((t) => (
+          <article key={t.name} className="r-pricing-card" style={pt.card}>
+            <div style={{ ...pt.accentBar, background: accents[t.name] }} />
+            <div style={pt.cardInner}>
+              <div style={{ ...pt.eyebrow, color: accents[t.name] }}>{t.tag}</div>
+              <div style={{ ...pt.sub, marginTop: 6 }}>{t.sub}</div>
+              {t.includes && (
+                <div style={pt.includes}><span style={{ color: 'var(--gold-500)' }}>✦</span> {t.includes}</div>
+              )}
+              <details className="r-pricing-details" open style={pt.details}>
+                <summary className="r-pricing-summary" style={pt.summary}>
+                  <span>Bekijk wat is inbegrepen</span>
+                  <span className="r-pricing-chevron" style={pt.chevron}>⌄</span>
+                </summary>
+                <div style={pt.divider} />
+                <ul style={pt.list}>
+                  {t.groups
+                    ? t.groups.map((g, gi) => (
+                        <React.Fragment key={gi}>
+                          <li style={{ ...pt.groupHead, marginTop: gi ? 16 : 0 }}>{g.head}</li>
+                          {g.items.map((f, j) => (
+                            <li key={j} style={pt.feat}>
+                              <Check />
+                              <span>{f}</span>
+                            </li>
+                          ))}
+                        </React.Fragment>
+                      ))
+                    : t.features.map((f, j) => (
+                        <li key={j} style={pt.feat}>
                           <Check />
                           <span>{f}</span>
                         </li>
                       ))}
-                    </React.Fragment>
-                  ))
-                : t.features.map((f, j) => (
-                    <li key={j} style={{ ...pt.feat, color: t.muted }}>
-                      <Check />
-                      <span>{f}</span>
-                    </li>
-                  ))}
-            </ul>
-            <a href="contact.html" style={{
-              ...pt.btn,
-              background: 'var(--ink)',
-              color: 'var(--ivory)',
-            }}>
-              Plan een kennismaking <span style={{ marginLeft: 10 }}>→</span>
-            </a>
+                </ul>
+                <a href="contact.html" style={pt.btn}>
+                  Plan een kennismaking <span style={{ marginLeft: 10 }}>→</span>
+                </a>
+              </details>
+            </div>
           </article>
         ))}
       </div>
@@ -190,15 +172,21 @@ function PricingTiers() {
   );
 }
 const pt = {
-  wrap: { padding: '32px 56px 120px', maxWidth: 1320, margin: '0 auto', position: 'relative', zIndex: 2 },
-  grid: { display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20, alignItems: 'stretch' },
+  wrap: { padding: '32px 24px 96px', maxWidth: 1320, margin: '0 auto', position: 'relative', zIndex: 2 },
+  grid: { display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24, alignItems: 'stretch' },
   card: {
-    borderRadius: 'var(--r-lg)', padding: '40px 36px',
+    borderRadius: 'var(--r-lg)', background: 'var(--pearl)',
+    border: '1px solid var(--hairline)', overflow: 'hidden',
     display: 'flex', flexDirection: 'column', height: '100%',
   },
+  accentBar: { height: 5, width: '100%' },
+  cardInner: { padding: '28px 24px 24px', display: 'flex', flexDirection: 'column', flex: 1 },
+  details: { display: 'flex', flexDirection: 'column', flex: 1 },
+  summary: { display: 'none', cursor: 'pointer', listStyle: 'none', alignItems: 'center', justifyContent: 'space-between', fontFamily: 'var(--font-body)', fontSize: 13, fontWeight: 500, color: 'var(--gold-600)', padding: '14px 0 0' },
+  chevron: { transition: 'transform 0.25s ease', fontSize: 16 },
   eyebrow: {
-    fontFamily: 'var(--font-body)', fontSize: 22, fontWeight: 500,
-    letterSpacing: '0.24em', textTransform: 'uppercase', marginBottom: 16,
+    fontFamily: 'var(--font-display)', fontStyle: 'italic', fontWeight: 500, fontSize: 22,
+    letterSpacing: '0.01em', marginBottom: 0,
   },
   badge: {
     position: 'absolute', top: 0, left: 0, right: 0,
@@ -215,7 +203,7 @@ const pt = {
   },
   custom: {
     position: 'relative', zIndex: 3,
-    marginTop: 151, padding: '28px 40px',
+    marginTop: 40, padding: '28px 40px',
     border: '1px solid var(--hairline)', borderRadius: 'var(--r-md)',
     background: 'var(--pearl)',
     display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -237,26 +225,27 @@ const pt = {
     fontFamily: 'var(--font-display)', fontWeight: 500, fontSize: 36,
     margin: '20px 0 4px', letterSpacing: '-0.005em',
   },
-  sub: { fontFamily: 'var(--font-body)', fontSize: 13, letterSpacing: '0.02em' },
+  sub: { fontFamily: 'var(--font-body)', fontSize: 13, letterSpacing: '0.02em', color: 'var(--ink-soft)' },
   includes: {
     display: 'inline-flex', alignItems: 'center', gap: 8,
     fontFamily: 'var(--font-body)', fontSize: 10.5, fontWeight: 500,
     letterSpacing: '0.18em', textTransform: 'uppercase',
-    color: 'var(--gold-600)', background: 'rgba(255,255,255,0.5)',
-    border: '1px solid var(--gold-500)', borderRadius: 999,
+    color: 'var(--gold-600)', background: 'rgba(255,255,255,0.6)',
+    border: '1px solid var(--gold-400)', borderRadius: 999,
     padding: '7px 15px', marginTop: 18, alignSelf: 'flex-start',
   },
-  divider: { height: 1, margin: '24px 0 20px' },
-  list: { listStyle: 'none', padding: 0, margin: '0 0 24px' },
+  divider: { height: 1, margin: '20px 0 18px', background: 'var(--hairline)' },
+  list: { listStyle: 'none', padding: 0, margin: '0 0 24px', flexGrow: 1 },
   feat: {
     display: 'flex', alignItems: 'flex-start',
     fontFamily: 'var(--font-body)', fontSize: 13.5, lineHeight: 1.5,
-    marginBottom: 9,
+    marginBottom: 9, color: 'var(--ink-soft)',
   },
   btn: {
     display: 'inline-flex', alignItems: 'center',
     fontFamily: 'var(--font-body)', fontSize: 14, fontWeight: 500,
     padding: '13px 22px', borderRadius: 999, textDecoration: 'none',
+    background: 'var(--ink)', color: 'var(--ivory)',
     alignSelf: 'flex-start', marginTop: 'auto',
   },
 };

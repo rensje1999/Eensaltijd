@@ -1,8 +1,8 @@
 const HERO_PHOTOS = [
-  { src: 'assets/hero-sluier.png', pos: 'center' },
-  { src: 'assets/hero-dans.png', pos: 'center 22%' },
-  { src: 'assets/hero-cabrio.png', pos: '55% center' },
-  { src: 'assets/koppel-zonsondergang.png', pos: 'center 8%' },
+  { src: 'assets/hero-sluier.jpg', pos: 'center' },
+  { src: 'assets/hero-dans.jpg', pos: 'center 22%' },
+  { src: 'assets/hero-cabrio.jpg', pos: '55% center' },
+  { src: 'assets/koppel-zonsondergang.jpg', pos: 'center 8%' },
 ];
 
 function HomeHero() {

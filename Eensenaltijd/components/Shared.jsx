@@ -121,10 +121,7 @@ function SiteFooter() {
       <img src="assets/logo.png" alt="Eens &amp; Altijd — weddingplanner in Twente" loading="lazy" decoding="async" style={footerCSS.logo} />
       <nav className="r-footer-nav" style={footerCSS.nav}>
         {items.map((it, i) => (
-          <React.Fragment key={it.label}>
-            {i > 0 && <span className="r-footer-dot" style={footerCSS.dot}>•</span>}
-            <a href={it.href} style={footerCSS.navLink}>{it.label}</a>
-          </React.Fragment>
+          <a key={it.label} href={it.href} style={footerCSS.navLink}>{it.label}</a>
         ))}
       </nav>
       <p style={footerCSS.slogan}>Eens in het echt. <em>Altijd in jullie hart.</em></p>
@@ -172,7 +169,7 @@ const footerCSS = {
   logo: { height: 64, width: 'auto', marginBottom: 28 },
   nav: { display: 'flex', alignItems: 'center', gap: 18, flexWrap: 'wrap', justifyContent: 'center', marginBottom: 28 },
   navLink: { fontFamily: 'var(--font-body)', fontSize: 14, letterSpacing: '0.03em', color: 'var(--ink)', textDecoration: 'none' },
-  dot: { color: 'var(--gold-400)', fontSize: 10 },
+  dot: { color: 'var(--gold-400)', fontSize: 10, display: 'flex', alignItems: 'center' },
   slogan: { fontFamily: 'var(--font-display)', fontStyle: 'italic', fontSize: 'clamp(20px, 2.2vw, 26px)', color: 'var(--gold-600)', margin: '0 0 36px', lineHeight: 1.4 },
   divider: { width: '100%', maxWidth: 480, height: 1, background: 'var(--hairline)', marginBottom: 24 },
   fine: {
