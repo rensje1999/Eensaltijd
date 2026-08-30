@@ -1,21 +1,35 @@
 const HERO_PHOTOS = [
-  { src: 'assets/hero-sluier.jpg', pos: 'center' },
-  { src: 'assets/hero-dans.jpg', pos: 'center 22%' },
-  { src: 'assets/hero-cabrio.jpg', pos: '55% center' },
-  { src: 'assets/koppel-zonsondergang.jpg', pos: 'center 8%' },
+  { src: 'assets/hero-sluier.jpg', m: 'assets/hero-sluier-m.jpg', pos: 'center' },
+  { src: 'assets/hero-dans.jpg', m: 'assets/hero-dans-m.jpg', pos: 'center 22%' },
+  { src: 'assets/hero-cabrio.jpg', m: 'assets/hero-cabrio-m.jpg', pos: '55% center' },
+  { src: 'assets/koppel-zonsondergang.jpg', m: 'assets/koppel-zonsondergang-m.jpg', pos: 'center 8%' },
 ];
+// Phones get the small crops; only the first slide is fetched up front so the
+// remaining three never compete with the first paint.
+const HERO_IS_SMALL = typeof window !== 'undefined' && window.matchMedia
+  && window.matchMedia('(max-width: 820px)').matches;
+const heroSrc = (p) => (HERO_IS_SMALL && p.m) || p.src;
 
 function HomeHero() {
   const [i, setI] = React.useState(0);
+  const [ready, setReady] = React.useState(1);
+  React.useEffect(() => {
+    const load = () => setReady(HERO_PHOTOS.length);
+    const idle = window.requestIdleCallback
+      ? window.requestIdleCallback(load, { timeout: 2500 })
+      : setTimeout(load, 1800);
+    return () => (window.cancelIdleCallback ? window.cancelIdleCallback(idle) : clearTimeout(idle));
+  }, []);
   React.useEffect(() => {
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (ready < HERO_PHOTOS.length) return;
     const id = setInterval(() => setI(n => (n + 1) % HERO_PHOTOS.length), 6000);
     return () => clearInterval(id);
-  }, []);
+  }, [ready]);
   return (
     <section className="r-hero" style={hh.wrap}>
-      {HERO_PHOTOS.map((p, n) => (
-        <div key={p.src} className="r-hero-bg" style={{ ...hh.bg, backgroundImage: `url("${p.src}")`, backgroundPosition: p.pos, opacity: n === i ? 1 : 0 }} />
+      {HERO_PHOTOS.slice(0, ready).map((p, n) => (
+        <div key={p.src} className="r-hero-bg" style={{ ...hh.bg, backgroundImage: `url("${heroSrc(p)}")`, backgroundPosition: p.pos, opacity: n === i ? 1 : 0 }} />
       ))}
       <div style={hh.scrim} />
       <div style={hh.grain} />
@@ -31,7 +45,7 @@ function HomeHero() {
         </div>
         <div style={hh.dots} className="r-hero-dots">
           {HERO_PHOTOS.map((p, n) => (
-            <span key={p.src} onClick={() => setI(n)} style={{ ...hh.dot, ...(n === i ? hh.dotOn : {}), cursor: 'pointer' }} />
+            <span key={p.src} onClick={() => { setReady(HERO_PHOTOS.length); setI(n); }} style={{ ...hh.dot, ...(n === i ? hh.dotOn : {}), cursor: 'pointer' }} />
           ))}
         </div>
       </div>
