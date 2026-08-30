@@ -129,6 +129,10 @@ img, svg, video { max-width: 100%; }
   .r-fine-links { justify-content: center !important; }
 }
 
+@media (max-width: 640px) {
+  .r-footer-nav { flex-wrap: wrap; justify-content: center; align-items: center; row-gap: 10px; }
+}
+
 @media (max-width: 480px) {
   .r-footer-nav { flex-direction: column !important; gap: 12px !important; }
   .r-footer-nav .r-footer-dot { display: none !important; }
@@ -138,17 +142,30 @@ img, svg, video { max-width: 100%; }
 @media (max-width: 768px) {
   .r-planner { flex-direction: column !important; text-align: center !important; gap: 28px !important; }
   .r-planner-text { align-items: center !important; display: flex !important; flex-direction: column !important; }
-  .r-planner-photo { flex: none !important; margin: 0 auto !important; }
+  .r-planner-photo { flex: none !important; margin: 0 auto !important; max-width: 240px !important; width: 100% !important; }
   .r-planner-arrow { display: none !important; }
 }
 
 /* ---------- Aanbod: pricing cards ---------- */
 @media (max-width: 1024px) {
   .r-pricing-custom { margin-top: 40px !important; }
+  .r-pricing-grid { grid-template-columns: 1fr 1fr !important; gap: 20px !important; }
 }
 @media (max-width: 900px) {
   .r-pricing-card { min-height: 0 !important; }
   .r-pricing-custom { flex-direction: column !important; padding: 24px 24px !important; }
+  .r-pricing-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
+  .r-pricing-summary { display: flex !important; }
+  .r-pricing-details:not([open]) .r-pricing-summary { padding-bottom: 4px !important; }
+  .r-pricing-details:not([open]) > *:not(summary) { display: none !important; }
+  .r-pricing-details[open] .r-pricing-chevron { transform: rotate(180deg); }
+}
+@media (max-width: 900px) {
+  .r-pricing-details:not([open]) { }
+  .r-pricing-details summary::-webkit-details-marker { display: none; }
+}
+@media (max-width: 640px) {
+  .r-pricing-grid { gap: 16px !important; }
 }
 
 /* ---------- Printable legal documents: reflow to viewport on phones ---------- */

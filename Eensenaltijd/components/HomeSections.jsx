@@ -3,7 +3,7 @@ function HomeAbout() {
     <section className="r-pad" style={ha.wrap}>
       <div className="r-2col" style={ha.row}>
         <div className="r-pad-block" style={ha.copyBlock}>
-          <div style={ha.eyebrow}><span className="ornament">◆</span> &nbsp; Over Eens & Altijd</div>
+          <div style={ha.eyebrow}><span className="ornament">✦</span> &nbsp; Over Eens & Altijd</div>
           <h2 style={ha.title}>Een planner.<br/><em style={ha.italic}>Van eerste idee tot laatste dans.</em></h2>
           <p style={ha.body}>
             Daar is die dan, die prachtige ring, die volmondige JA! en het
@@ -36,7 +36,7 @@ function HomeApproach() {
       <div style={{ ...ha.row, gridTemplateColumns: '1fr 1.1fr' }}>
         <PhotoTile aspect="4 / 5" photo="assets/bruid-boeket.png" alt="Bruid met bruidsboeket van witte rozen tijdens een bruiloft in Twente" />
         <div className="r-pad-block" style={ha.copyBlock}>
-          <div style={ha.eyebrow}><span className="ornament">◆</span> &nbsp; Mijn aanpak</div>
+          <div style={ha.eyebrow}><span className="ornament">✦</span> &nbsp; Mijn aanpak</div>
           <h2 style={ha.title}>Ik luister eerst.<br/><em style={ha.italic}>Plannen doen we samen!</em></h2>
           <p style={ha.body}>
             Geen pakket dat ik over jullie heen leg. Eerst een rustig

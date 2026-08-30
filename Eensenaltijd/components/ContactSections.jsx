@@ -2,7 +2,7 @@ function ContactHero() {
   return (
     <section className="r-pad" style={ch.wrap}>
           <div style={ch.inner}>
-        <div style={ch.eyebrow}>◆ &nbsp; Contact</div>
+        <div style={ch.eyebrow}><span className="ornament">✦</span> &nbsp; Contact</div>
         <h1 style={ch.title}>Vertel mij over<br/><em style={ch.italic}>jullie dag.</em></h1>
         <div style={ch.script}>Een vrijblijvende kennismaking</div>
         <p style={ch.body}>
@@ -53,7 +53,7 @@ const cp = {
   script: { fontFamily: 'var(--font-script)', fontSize: 'clamp(42px, 5vw, 60px)', color: 'var(--gold-500)', margin: 0, lineHeight: 1.2 },
   body: { fontFamily: 'var(--font-body)', fontSize: 16, lineHeight: 1.7, color: 'var(--ink-soft)', margin: '20px 0 0', maxWidth: 400 },
   arrow: { marginTop: 20, transform: 'scaleX(-1)' },
-  photoOuter: { position: 'relative', flex: '0 0 300px', transform: 'rotate(3deg)' },
+  photoOuter: { position: 'relative', flex: '0 0 600px', maxWidth: 600, transform: 'rotate(3deg)' },
   // class r-float-polaroid added at usage for the floating animation
   tape: {
     position: 'absolute', top: -14, left: '50%', transform: 'translateX(-50%) rotate(-4deg)',
@@ -117,7 +117,7 @@ function ContactForm() {
 
         {/* aside */}
         <aside className="r-sticky r-pad-block r-glow-hover" style={cf.aside}>
-          <div style={cf.asideEye}>◆ &nbsp; Of bereik mij direct</div>
+          <div style={cf.asideEye}><span className="ornament">✦</span> &nbsp; Of bereik mij direct</div>
           <div style={cf.asideRow}>
             <div style={cf.asideLabel}>E-mail</div>
             <a href="mailto:eensenaltijd@gmail.com" style={cf.asideValue}>eensenaltijd@gmail.com</a>
@@ -125,8 +125,8 @@ function ContactForm() {
           <div style={cf.asideRow}>
             <div style={cf.asideLabel}>WhatsApp</div>
             <div style={cf.phoneRow}>
-              <a href="https://wa.me/31650537118" target="_blank" rel="noopener" style={cf.waBtn} aria-label="Stuur een WhatsApp-bericht">
-                <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.65-2.05-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.47s1.06 2.86 1.21 3.06c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.69.25-1.28.17-1.41-.07-.13-.27-.2-.57-.35z"/><path d="M12.04 2C6.6 2 2.18 6.42 2.18 11.86c0 1.74.46 3.44 1.32 4.94L2 22l5.34-1.4a9.83 9.83 0 0 0 4.7 1.2h.01c5.43 0 9.85-4.42 9.85-9.86A9.8 9.8 0 0 0 12.04 2zm0 17.96h-.01a8.2 8.2 0 0 1-4.16-1.14l-.3-.18-3.17.83.85-3.09-.2-.32a8.15 8.15 0 0 1-1.25-4.35c0-4.52 3.68-8.2 8.2-8.2 2.2 0 4.26.86 5.81 2.41a8.15 8.15 0 0 1 2.4 5.8c0 4.52-3.67 8.2-8.19 8.2z"/></svg>
+              <a href="https://wa.me/31650537118" target="_blank" rel="noopener" style={cf.waBtn} aria-label="Stuur een WhatsApp-bericht" className="r-glow-hover">
+                <svg viewBox="0 0 32 32" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M16.004 3C9.377 3 4 8.377 4 15.004c0 2.386.694 4.612 1.897 6.478L4.6 26.6l5.234-1.253a11.94 11.94 0 0 0 6.17 1.658c6.627 0 12.004-5.377 12.004-12.001C28.008 8.377 22.631 3 16.004 3zm7.06 17.006c-.3.845-1.502 1.577-2.086 1.667-.535.082-1.203.117-1.94-.123-.446-.147-1.018-.34-1.75-.667-3.077-1.328-5.086-4.416-5.24-4.622-.155-.206-1.24-1.65-1.24-3.146 0-1.495.784-2.23 1.06-2.533.278-.303.605-.379.807-.379.202 0 .404.002.58.011.186.009.436-.07.681.52.253.61.86 2.096.936 2.248.076.152.126.33.025.532-.1.202-.15.328-.303.505-.152.177-.32.395-.457.53-.152.152-.31.317-.133.622.177.303.788 1.298 1.69 2.104 1.163 1.037 2.144 1.36 2.454 1.512.31.152.49.126.674-.076.184-.202.782-.909.99-1.222.21-.31.42-.26.71-.156.29.101 1.826.86 2.14 1.017.31.152.518.227.593.354.076.126.076.732-.224 1.577z"/></svg>
               </a>
             </div>
           </div>
@@ -223,8 +223,9 @@ const cf = {
   phoneRow: { display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' },
   waBtn: {
     display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-    width: 30, height: 30, borderRadius: 999, textDecoration: 'none',
-    background: '#25D366', color: '#0b2f18',
+    width: 56, height: 56, borderRadius: 999, textDecoration: 'none',
+    background: 'var(--sage-deep)', color: 'var(--ivory)',
+    boxShadow: '0 8px 20px rgba(43,33,23,0.25)',
   },
   asideLabel: { fontFamily: 'var(--font-body)', fontSize: 11, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(245,236,214,0.55)', marginBottom: 6 },
   asideValue: { fontFamily: 'var(--font-display)', fontSize: 20, color: 'var(--ivory)', textDecoration: 'none', lineHeight: 1.4, display: 'block' },
