@@ -42,14 +42,6 @@ function FinalCTA() {
       <div style={{ ...eaDeep.panel, padding: '104px 72px', textAlign: 'center' }}>
         <div style={eaDeep.grain} />
         <div style={{ position: 'relative' }}>
-          <div style={{
-            fontFamily: 'var(--font-body)', fontSize: 12, fontWeight: 500,
-            letterSpacing: '0.24em', textTransform: 'uppercase',
-            color: 'var(--brass-soft)', marginBottom: 22,
-            display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12,
-          }}>
-            <span style={{ color: 'var(--brass)' }}>✦</span> Een eerste gesprek
-          </div>
           <h2 style={{
             fontFamily: 'var(--font-display)', fontWeight: 400,
             fontSize: 'clamp(34px, 4.4vw, 64px)', lineHeight: 1.06,

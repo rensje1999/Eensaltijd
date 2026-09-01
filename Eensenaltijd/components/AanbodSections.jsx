@@ -3,17 +3,16 @@ function AanbodHero() {
     <section className="r-pad" style={ah.wrap}>
       <div style={ah.tulle} />
       <div style={ah.inner}>
-        <div style={ah.eyebrow}><span style={{ color: 'var(--brass)' }}>✦</span> &nbsp; Mijn aanbod</div>
         <h1 style={ah.title}>
           Drie pakketten.<br/>
           <em style={ah.italic}>Eén belofte.</em>
         </h1>
         <div style={ah.script}>Zorgeloos stralen in jullie eigen sprookje</div>
         <p style={ah.body}>
-          Of jullie nu alles uit handen willen geven of alleen op de dag
-          zelf rust willen — kies het pakket dat bij jullie past. Alle
-          pakketten beginnen met een vrijblijvende kennismaking. Ook kunnen
-          de pakketten worden aangepast naar jullie smaak.
+          Willen jullie nu alles uit handen geven of alleen op de dag zelf
+          rust creëren. Kies het pakket wat het beste bij jullie past. Alle
+          pakketten beginnen met een vrijblijvende kennismaking en kunnen
+          worden aangepast naar jullie wensen.
         </p>
       </div>
     </section>
@@ -25,7 +24,7 @@ const ah = {
     position: 'absolute', inset: 0, pointerEvents: 'none',
     background:
       'linear-gradient(180deg, rgba(251,247,239,0.62), rgba(251,247,239,0.78)),' +
-      'url("assets/aanbod-bloemen.png") center 45%/cover no-repeat',
+      'url("assets/aanbod-bloemen.jpg") center 45%/cover no-repeat',
   },
   inner: { position: 'relative', maxWidth: 880, margin: '0 auto' },
   eyebrow: {
@@ -173,7 +172,7 @@ function PricingTiers() {
 }
 const pt = {
   wrap: { padding: '32px 24px 96px', maxWidth: 1320, margin: '0 auto', position: 'relative', zIndex: 2 },
-  grid: { display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24, alignItems: 'stretch' },
+  grid: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(300px, 100%), 1fr))', gap: 24, alignItems: 'stretch' },
   card: {
     borderRadius: 'var(--r-lg)', background: 'var(--pearl)',
     border: '1px solid var(--hairline)', overflow: 'hidden',
@@ -294,7 +293,6 @@ function ProcessTimeline() {
   return (
     <section className="r-panel" style={pp.wrap}>
       <div style={pp.head}>
-        <Eyebrow>Mijn aanpak</Eyebrow>
         <h2 style={pp.title}>Vier stappen.<br/><em style={{ fontStyle:'italic', color:'var(--gold-500)' }}>Een gerust gevoel.</em></h2>
       </div>
       <div className="r-4col" style={pp.row}>
@@ -314,7 +312,7 @@ const pp = {
   wrap: { padding: '96px 56px', background: 'var(--pearl)', borderRadius: 'var(--r-lg)', margin: '0 32px 40px', maxWidth: 1320, marginLeft: 'auto', marginRight: 'auto' },
   head: { textAlign: 'center', marginBottom: 64, display: 'flex', flexDirection: 'column', alignItems: 'center' },
   title: { fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 'clamp(36px, 4vw, 56px)', lineHeight: 1.05, color: 'var(--ink)', margin: 0, letterSpacing: '-0.005em' },
-  row: { display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 32, maxWidth: 1100, margin: '0 auto' },
+  row: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(200px, 100%), 1fr))', gap: 32, maxWidth: 1100, margin: '0 auto' },
   step: { },
   num: { fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: 48, color: 'var(--gold-400)', fontStyle: 'italic', lineHeight: 1 },
   line: { width: 40, height: 1, background: 'var(--gold-400)', margin: '20px 0' },

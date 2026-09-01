@@ -318,7 +318,7 @@ const phCSS = {
     display: 'flex', alignItems: 'center', justifyContent: 'center',
     minHeight: 420, padding: '72px 56px',
   },
-  bg: { position: 'absolute', inset: 0, background: 'url("assets/header-ceremonie.png") center/cover no-repeat' },
+  bg: { position: 'absolute', inset: 0, background: 'url("assets/header-ceremonie.jpg") center/cover no-repeat' },
   scrim: { position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(43,33,23,0.42), rgba(43,33,23,0.62))' },
   grain: { position: 'absolute', inset: 0, backgroundImage: 'var(--grain)', opacity: 0.35, mixBlendMode: 'overlay' },
   inner: { position: 'relative', zIndex: 2, maxWidth: 860, textAlign: 'center' },

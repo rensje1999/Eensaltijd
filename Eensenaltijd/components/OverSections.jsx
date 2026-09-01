@@ -2,7 +2,6 @@ function OverHero() {
   return (
     <section className="r-2col r-pad" style={oh.wrap}>
       <div style={oh.left}>
-        <div style={oh.eyebrow}><span style={{ color: 'var(--brass)' }}>✦</span> &nbsp; Over mij</div>
         <h1 style={oh.title}>Hallo, ik ben<br/><em style={oh.italic}>Elise.</em></h1>
         <div style={oh.script}>De vrouw achter Eens &amp; Altijd</div>
         <p className="dropcap" style={oh.body}>
@@ -18,7 +17,7 @@ function OverHero() {
         <GoldButton href="contact.html" variant="dark" style={{ marginTop: 16 }}>Laat ons kennismaken</GoldButton>
       </div>
       <div style={oh.right}>
-        <PhotoTile aspect="4 / 5" photo="assets/elise-portret.jpg" alt="Elise, weddingplanner en ceremoniemeester bij Eens &amp; Altijd in Enschede" arch />
+        <PhotoTile aspect="4 / 5" photo="assets/elise-portret-v2.jpg" alt="Elise, weddingplanner en ceremoniemeester bij Eens &amp; Altijd in Enschede" arch />
       </div>
     </section>
   );

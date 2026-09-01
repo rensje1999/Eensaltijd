@@ -2,12 +2,12 @@ function ContactHero() {
   return (
     <section className="r-pad" style={ch.wrap}>
           <div style={ch.inner}>
-        <div style={ch.eyebrow}><span className="ornament">✦</span> &nbsp; Contact</div>
         <h1 style={ch.title}>Vertel mij over<br/><em style={ch.italic}>jullie dag.</em></h1>
         <div style={ch.script}>Een vrijblijvende kennismaking</div>
         <p style={ch.body}>
-          Even rustig een kopje koffie samen. Ik luister, jullie dromen hardop. Daarna
-          kijken we samen of we passen — zonder verplichtingen.
+          Even rustig een kopje koffie samen. Ik luister en jullie delen hardop
+          jullie dromen en wensen. Daarna kijken we samen of we samen jullie
+          bijzondere dag kunnen vormgeven — zonder verplichtingen.
         </p>
       </div>
     </section>
@@ -41,7 +41,7 @@ function ContactPlanner() {
       <div className="r-planner-photo r-float-polaroid" style={cp.photoOuter}>
         <div style={cp.tape} />
         <div className="r-glow-hover" style={cp.polaroid}>
-          <image-slot id="contact-elise-photo" shape="rect" fit="cover" placeholder="Foto van Elise" src="uploads/20260728_142957.jpg" style={cp.photoSlot}></image-slot>
+          <image-slot id="contact-elise-photo" shape="rect" fit="cover" placeholder="Foto van Elise" src="assets/elise-polaroid.jpg" style={cp.photoSlot}></image-slot>
         </div>
       </div>
     </section>
@@ -53,7 +53,7 @@ const cp = {
   script: { fontFamily: 'var(--font-script)', fontSize: 'clamp(42px, 5vw, 60px)', color: 'var(--gold-500)', margin: 0, lineHeight: 1.2 },
   body: { fontFamily: 'var(--font-body)', fontSize: 16, lineHeight: 1.7, color: 'var(--ink-soft)', margin: '20px 0 0', maxWidth: 400 },
   arrow: { marginTop: 20, transform: 'scaleX(-1)' },
-  photoOuter: { position: 'relative', flex: '0 0 600px', maxWidth: 600, transform: 'rotate(3deg)' },
+  photoOuter: { position: 'relative', flex: '0 1 600px', minWidth: 0, maxWidth: 'min(600px, 100%)', transform: 'rotate(3deg)' },
   // class r-float-polaroid added at usage for the floating animation
   tape: {
     position: 'absolute', top: -14, left: '50%', transform: 'translateX(-50%) rotate(-4deg)',

@@ -21,15 +21,16 @@ function HomeCalm() {
       `}</style>
       <div className="ea-calm__inner">
         <figure className="ea-calm__fig">
-          <img className="ea-calm__img" src="assets/kandelaars-tafel.png" loading="lazy" decoding="async" alt="Gedekte bruiloftstafel met witte rozen en gouden kandelaars in het avondlicht" />
+          <img className="ea-calm__img" src="assets/kandelaars-tafel.jpg" loading="lazy" decoding="async" alt="Gedekte bruiloftstafel met witte rozen en gouden kandelaars in het avondlicht" />
         </figure>
         <div>
-          <p className="ea-calm__eyebrow"><span className="ornament">✦</span> Van stress naar rust</p>
           <h2>Van <em>'waar beginnen we?'</em><br/>naar volledige rust.</h2>
           <p>
             Een bruiloft plannen begint sprankelend — en groeit ongemerkt uit
             tot honderd kleine beslissingen. Leveranciers, tijdschema's,
-            contracten, en de stille zorg of alles op tijd klaarstaat.
+            contracten en ieder detail achter de schermen. Ik zorg ervoor dat
+            alles op het juiste moment samenkomt en geregeld is op jullie
+            bijzondere dag.
           </p>
           <p>
             Daar stap ik in. Ik neem het overzicht over en houd achter de

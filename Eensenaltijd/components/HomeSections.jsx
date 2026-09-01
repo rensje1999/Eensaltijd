@@ -3,7 +3,6 @@ function HomeAbout() {
     <section className="r-pad" style={ha.wrap}>
       <div className="r-2col" style={ha.row}>
         <div className="r-pad-block" style={ha.copyBlock}>
-          <div style={ha.eyebrow}><span className="ornament">✦</span> &nbsp; Over Eens & Altijd</div>
           <h2 style={ha.title}>Een planner.<br/><em style={ha.italic}>Van eerste idee tot laatste dans.</em></h2>
           <p style={ha.body}>
             Daar is die dan, die prachtige ring, die volmondige JA! en het
@@ -19,7 +18,7 @@ function HomeAbout() {
           <GoldButton href="over.html" variant="dark" style={{ marginTop: 12 }}>Lees meer over mij</GoldButton>
         </div>
         <div style={{ position: 'relative' }}>
-          <PhotoTile aspect="4 / 5" photo="assets/elise-werkplek.jpg" alt="Elise van Eens &amp; Altijd aan haar werkplek, bezig met de planning van een bruiloft" />
+          <PhotoTile aspect="4 / 5" photo="assets/elise-werkplek-v2.jpg" alt="Elise van Eens &amp; Altijd aan haar werkplek, bezig met de planning van een bruiloft" />
           <div className="r-float-badge" style={ha.glassCard}>
             <div style={ha.glassHead}>Ontmoet de vrouw achter Eens &amp; Altijd</div>
             <p style={ha.glassQuote}>Samen op zoek naar de sfeer die bij jullie past</p>
@@ -34,7 +33,7 @@ function HomeApproach() {
   return (
     <section style={{ ...ha.wrap, paddingTop: 0 }}>
       <div style={{ ...ha.row, gridTemplateColumns: '1fr 1.1fr' }}>
-        <PhotoTile aspect="4 / 5" photo="assets/bruid-boeket.png" alt="Bruid met bruidsboeket van witte rozen tijdens een bruiloft in Twente" />
+        <PhotoTile aspect="4 / 5" photo="assets/bruid-boeket.jpg" alt="Bruid met bruidsboeket van witte rozen tijdens een bruiloft in Twente" />
         <div className="r-pad-block" style={ha.copyBlock}>
           <div style={ha.eyebrow}><span className="ornament">✦</span> &nbsp; Mijn aanpak</div>
           <h2 style={ha.title}>Ik luister eerst.<br/><em style={ha.italic}>Plannen doen we samen!</em></h2>
@@ -115,11 +114,6 @@ function HomeServicesPreview() {
   return (
     <section className="r-pad" style={hsp.wrap}>
       <div style={hsp.head}>
-        <div style={{
-          fontFamily: 'var(--font-body)', fontSize: 12, fontWeight: 500,
-          letterSpacing: '0.24em', textTransform: 'uppercase',
-          color: 'var(--gold-500)', marginBottom: 18,
-        }}>Mijn diensten</div>
         <h2 style={hsp.title}>Drie manieren om <em style={{ fontStyle:'italic', color:'var(--gold-500)' }}>samen</em> te werken.</h2>
         <div style={hsp.scriptLine}>ieder hoofdstuk op jullie eigen tempo</div>
       </div>
@@ -271,7 +265,7 @@ function HomeTestimonial() {
   const r = reviews[i];
   return (
     <section className="r-panel" style={ht.wrap}>
-      <div style={ht.eyebrow}>Verhalen</div>
+      <div style={ht.eyebrow}>REVIEW</div>
       <div style={ht.script}>{r.quote}</div>
       <p style={ht.body}>{r.body}</p>
       <div style={ht.attribution}>
